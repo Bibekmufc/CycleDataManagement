@@ -20,6 +20,7 @@ namespace CycleDataManagement
         public int[] arrayTime = { };
         public List<string> paraArrays = new List<string>();
         public List<string> speed = new List<string>();
+        public List<string> speed_miles = new List<string>();
         public List<string> cadence = new List<string>();
         public List<string> altitude = new List<string>();
         public List<string> power = new List<string>();
@@ -29,24 +30,33 @@ namespace CycleDataManagement
         int interval = 0;
         DateTime dt = new DateTime();
         char[] findOf = { '\t', ' ', '=' };
+        int cad, hr, pwr, al;
+        double sp;
+        int sHeart = 0;
+        int sSpeed = 0;
+        int sCadence = 0;
+        int sAltitude = 0;
+        int sPower = 0;
+        string smode = "";
 
 
         public Form1()
         {
             InitializeComponent();
             InitializeGrid();
+            cmbunit.SelectedIndex = 0;
         }
 
         //specifying column header
         private void InitializeGrid()
         {
             dataGrid.ColumnCount = 6;
-            dataGrid.Columns[5].Name = "Time (HH:MM:SS)";
-            dataGrid.Columns[0].Name = "Heart Rate (BPM)";
-            dataGrid.Columns[1].Name = "Speed (KM/H)";
-            dataGrid.Columns[2].Name = "Cadence (RPM)";
-            dataGrid.Columns[3].Name = "Altitude (M/FT)";
-            dataGrid.Columns[4].Name = "Power (WATTS)";
+            dataGrid.Columns[0].Name = "Time (HH:MM:SS)";
+            dataGrid.Columns[1].Name = "Heart Rate (BPM)";
+            dataGrid.Columns[2].Name = "Speed (KM/H)";
+            dataGrid.Columns[3].Name = "Cadence (RPM)";
+            dataGrid.Columns[4].Name = "Altitude (M/FT)";
+            dataGrid.Columns[5].Name = "Power (WATTS)";
         }
 
         private void Open_Click(object sender, EventArgs e)
@@ -85,14 +95,17 @@ namespace CycleDataManagement
                     }
 
                 }
-                    for (int i = 1; i < paraArrays.Count(); i += 2)
+                for (int i = 1; i < paraArrays.Count(); i += 2)
+                {
+                    parameter.Add(paraArrays[i], paraArrays[1 + i]);
+                    if (paraArrays.Any())
                     {
-                        parameter.Add(paraArrays[i], paraArrays[1 + i]);
-                        if (paraArrays.Any())
-                        {
-                            paraArrays.RemoveAt(paraArrays.Count - 1);
-                        }
+                        paraArrays.RemoveAt(paraArrays.Count - 1);
                     }
+                }
+
+                smode = parameter["SMode"];
+                SMODE(smode);
 
                 while (!sr.EndOfStream)
                 {
@@ -110,7 +123,7 @@ namespace CycleDataManagement
                 DataDictionary();
 
 
-               if (parameter.ContainsKey("Date"))
+                if (parameter.ContainsKey("Date"))
                 {
                     string dateTime = parameter["Date"];
                     DateTime date = DateTime.ParseExact(dateTime, "yyyyMMdd", CultureInfo.InvariantCulture);
@@ -168,11 +181,33 @@ namespace CycleDataManagement
 
                 string newline = string.Join(" ", line.Split(findOf, StringSplitOptions.RemoveEmptyEntries));
                 List<string> val = newline.Split(' ').ToList();
-                heartRate.Add(val[0]);
-                speed.Add(val[1]);
-                cadence.Add(val[2]);
-                altitude.Add(val[3]);
-                power.Add(val[4]);
+                if (sHeart == 1)
+                {
+                    hr = int.Parse(val[0]);
+                }
+                if (sSpeed == 1)
+                {
+                    sp = int.Parse(val[1]);
+                }
+                if (sCadence == 1)
+                {
+                    cad = int.Parse(val[2]);
+                }
+                if (sPower == 1)
+                {
+                    pwr = int.Parse(val[4]);
+
+                }
+                if (sAltitude == 1)
+                {
+                    al = int.Parse(val[3]);
+                }
+                heartRate.Add(hr.ToString());
+                speed.Add((sp * 0.1).ToString());
+                speed_miles.Add((sp * 0.1 * 0.621371).ToString());
+                cadence.Add(cad.ToString());
+                altitude.Add(al.ToString());
+                power.Add(pwr.ToString());
                 powerBalancePedalling.Add(val[5]);
                 val = null;
 
@@ -183,14 +218,24 @@ namespace CycleDataManagement
             }
         }
 
-     /*   public string calcTime(string time)
+        private void SMODE(string mode)
+        {
+            sHeart = int.Parse(mode.Substring(0, 1));
+            sSpeed = int.Parse(mode.Substring(1, 1));
+            sCadence = int.Parse(mode.Substring(2, 1));
+            sAltitude = int.Parse(mode.Substring(3, 1));
+            sPower = int.Parse(mode.Substring(4, 1));
+        }
+
+
+        public string calcTime(string time)
         {
             // fetch the en-GB culture
             CultureInfo ci = new CultureInfo("en-GB");
-            dt = DateTime.ParseExact(time, "HH:mm:ss", ci.DateTimeFormat);
-            string result = dt.AddSeconds(interval).ToString("HH:mm:ss");
+            dt = DateTime.ParseExact(time, "HH:mm:ss.f", ci.DateTimeFormat);
+            string result = dt.AddSeconds(interval).ToString("HH:mm:ss.f");
             return result;
-        } */
+        }
 
         //displayed list data to grid view table
         public void viewData()
@@ -199,8 +244,8 @@ namespace CycleDataManagement
             int counter = 0;
             foreach (var value in speed)
             {
-                dataGrid.Rows.Add(/*calcTime(parameter["StartTime"])*/
-                     heartRate[counter]
+                dataGrid.Rows.Add(calcTime(parameter["StartTime"])
+                    , heartRate[counter]
                     , speed[counter]
                     , cadence[counter]
                     , altitude[counter]
@@ -208,8 +253,54 @@ namespace CycleDataManagement
                     );
                 counter++;
                 interval = interval + 1;
+    }
+}
+
+        private void CalculateSpeed(string type)
+        {
+            if (Data.Count > 0)
+            {
+                List<string> data = new List<string>();
+                if (type == "Miles")
+                {
+                    dataGrid.Columns[2].Name = "Speed(Mile/hr)";
+
+                    data.Clear();
+                    for (int i = 0; i < Data.Count; i++)
+                    {
+                        string temp = (Convert.ToDouble(Data["speed"][i]) / 100).ToString();
+                        data.Add(temp);
+                    }
+
+                    Data["speed"].Clear();
+                    Data["speed"] = data;
+
+                    //dataGridView1.SelectedCells[0].Value = 10.ToString();
+                    //dataGridView1.SelectedCells[1].Value = 10.ToString();
+
+                    //dataGrid.Update();
+                    //dataGrid.Refresh();
+                }
+                else
+                {
+                    dataGrid.Columns[2].Name = "Speed(km/hr)";
+
+                    data.Clear();
+                    for (int i = 0; i < Data.Count; i++)
+                    {
+                        string temp = (Convert.ToDouble(Data["speed"][i]) / 1.5).ToString();
+                        data.Add(temp);
+                    }
+
+                    Data["speed"].Clear();
+                    Data["speed"] = data;
+
+                    dataGrid.Update();
+                    dataGrid.Refresh();
+                }
             }
         }
+
 
         //adding HRdata to dictionary 
         private void DataDictionary()
@@ -243,13 +334,55 @@ namespace CycleDataManagement
             lblavspeed.Text = averageSpeed.ToString();
             lblmaxspeed.Text = maxSpeed.ToString();
             lblavhrate.Text = averageHeartRate.ToString();
-            lblmaxhrate.Text = maximumHeartRate.ToString();
+            lblmaxhrate.Text = maximumHeartRate.ToString() + "" + "BPM";
             lblavhrate.Text = minimumHeartRate.ToString();
             lblavpwr.Text = averagePower.ToString();
             lblmaxpwr.Text = maximumPower.ToString();
             lblavalt.Text = averageAltitude.ToString();
 
 
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculateSpeed("KM");
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculateSpeed("Miles");
+        }
+
+        private void arrayNuller()
+        {
+            Data = new Dictionary<string, List<string>>();
+            parameter = new Dictionary<string, string>();
+            paraArrays = new List<string>();
+            arrayTime = new int[] { };
+            heartRate = new List<string>();
+            speed = new List<string>();
+            cadence = new List<string>();
+            altitude = new List<string>();
+            power = new List<string>();
+            powerBalancePedalling = new List<string>();
+            device = new string[] { };
+            counter = 0;
+            interval = 0;
+            findOf = new char[] { };
+            dataGrid.DataSource = null;
+            dataGrid.Rows.Clear();
+
+            lbltotal.Text = "";
+            lblavspeed.Text = "";
+            lblmaxspeed.Text = "";
+            lblavhrate.Text = "";
+            lblmaxhrate.Text = "";
+            lblavpwr.Text = "";
+            lblmaxpwr.Text = "";
+            lblavalt.Text = "";
+            lbldevice.Text = "";
+            lblStartTime.Text = "";
+            lblinterval.Text = "";
         }
 
         private void IndividualGraphToolStripMenuItem_Click(object sender, EventArgs e)

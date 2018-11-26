@@ -27,8 +27,27 @@ namespace CycleDataManagement
             _altitude = altitude;
             _power = power;
             InitializeComponent();
+
+            this.CenterToScreen();
+            zheart.Visible = true;
+            zpower.Visible = false;
+            zspeed.Visible = false;
+            zaltitude.Visible = false;
+            zcadence.Visible = false;
+
+
+            this.rdHR.Checked = true;
         }
         private PointPairList buildPointPairList(int[] value)
+        {
+            PointPairList pr = new PointPairList();
+            for (int i = 0; i < value.Count(); i++)
+            {
+                pr.Add(i, (value[i]));
+            }
+            return pr;
+        }
+        private PointPairList buildPointPairList(double[] value)
         {
             PointPairList pr = new PointPairList();
             for (int i = 0; i < value.Count(); i++)
@@ -81,7 +100,7 @@ namespace CycleDataManagement
 
             List<int> hr = _heartRate.Select(s => Convert.ToInt32(s)).ToList();
             heartPairList = buildPointPairList(hr.ToArray());
-            List<int> c2 = _speed.Select(s => Convert.ToInt32(s)).ToList();
+            List<double> c2 = _speed.Select(s => Convert.ToDouble(s)).ToList();
             speedPairList = buildPointPairList(c2.ToArray());
             List<int> c3 = _cadence.Select(s => Convert.ToInt32(s)).ToList();
             cadencePairList = buildPointPairList(c3.ToArray());
@@ -113,6 +132,79 @@ namespace CycleDataManagement
             zcadence.AxisChange();
             zpower.AxisChange();
             zaltitude.AxisChange();
+        }
+
+        private void individual_Resize(object sender, EventArgs e)
+        {
+            SetSize();
+        }
+
+        private void SetSize()
+        {
+            zheart.Location = new Point(0, 0);
+            zheart.IsShowPointValues = true;
+            zheart.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
+
+            zspeed.Location = new Point(0, 0);
+            zspeed.IsShowPointValues = true;
+            zspeed.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
+
+            zcadence.Location = new Point(0, 0);
+            zcadence.IsShowPointValues = true;
+            zcadence.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
+
+            zpower.Location = new Point(0, 0);
+            zpower.IsShowPointValues = true;
+            zpower.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
+
+            zaltitude.Location = new Point(0, 0);
+            zaltitude.IsShowPointValues = true;
+            zaltitude.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
+        }
+
+        private void rdSpeed_CheckedChanged(object sender, EventArgs e)
+        {
+            zheart.Visible = false;
+            zpower.Visible = false;
+            zspeed.Visible = true;
+            zaltitude.Visible = false;
+            zcadence.Visible = false;
+        }
+
+        private void rdCadence_CheckedChanged(object sender, EventArgs e)
+        {
+            zheart.Visible = false;
+            zpower.Visible = false;
+            zspeed.Visible = false;
+            zaltitude.Visible = false;
+            zcadence.Visible = true;
+        }
+
+        private void rdPower_CheckedChanged(object sender, EventArgs e)
+        {
+            zheart.Visible = false;
+            zpower.Visible = true;
+            zspeed.Visible = false;
+            zaltitude.Visible = false;
+            zcadence.Visible = false;
+        }
+
+        private void rdAltitude_CheckedChanged(object sender, EventArgs e)
+        {
+            zheart.Visible = false;
+            zpower.Visible = false;
+            zspeed.Visible = false;
+            zaltitude.Visible = true;
+            zcadence.Visible = false;
+        }
+
+        private void rdHR_CheckedChanged(object sender, EventArgs e)
+        {
+            zheart.Visible = true;
+            zpower.Visible = false;
+            zspeed.Visible = false;
+            zaltitude.Visible = false;
+            zcadence.Visible = false;
         }
     }
 }

@@ -39,6 +39,7 @@
             this.zGraph.PointValueFormat = "G";
             this.zGraph.Size = new System.Drawing.Size(1099, 691);
             this.zGraph.TabIndex = 0;
+            this.zGraph.Resize += new System.EventHandler(this.Graph_Resize);
             // 
             // Graph
             // 

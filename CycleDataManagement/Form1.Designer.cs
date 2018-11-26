@@ -40,6 +40,10 @@
             this.lblinterval = new System.Windows.Forms.Label();
             this.lbl9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbunit = new System.Windows.Forms.ComboBox();
             this.lblavhrate = new System.Windows.Forms.Label();
             this.lbl4 = new System.Windows.Forms.Label();
             this.lblmaxhrate = new System.Windows.Forms.Label();
@@ -185,6 +189,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.cmbunit);
             this.panel3.Controls.Add(this.lblavhrate);
             this.panel3.Controls.Add(this.lbl4);
             this.panel3.Controls.Add(this.lblmaxhrate);
@@ -205,6 +213,51 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1063, 261);
             this.panel3.TabIndex = 1;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(810, 197);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(61, 21);
+            this.radioButton2.TabIndex = 14;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Miles";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(810, 163);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(49, 21);
+            this.radioButton1.TabIndex = 13;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "KM";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(805, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(204, 26);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Select Speed Unit";
+            // 
+            // cmbunit
+            // 
+            this.cmbunit.FormattingEnabled = true;
+            this.cmbunit.Items.AddRange(new object[] {
+            "mph",
+            "kmph"});
+            this.cmbunit.Location = new System.Drawing.Point(810, 99);
+            this.cmbunit.Name = "cmbunit";
+            this.cmbunit.Size = new System.Drawing.Size(199, 24);
+            this.cmbunit.TabIndex = 11;
             // 
             // lblavhrate
             // 
@@ -398,14 +451,14 @@
             // individualGraphToolStripMenuItem
             // 
             this.individualGraphToolStripMenuItem.Name = "individualGraphToolStripMenuItem";
-            this.individualGraphToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.individualGraphToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.individualGraphToolStripMenuItem.Text = "Individual Graph";
             this.individualGraphToolStripMenuItem.Click += new System.EventHandler(this.IndividualGraphToolStripMenuItem_Click);
             // 
             // mainGraphToolStripMenuItem
             // 
             this.mainGraphToolStripMenuItem.Name = "mainGraphToolStripMenuItem";
-            this.mainGraphToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.mainGraphToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.mainGraphToolStripMenuItem.Text = "Main Graph";
             this.mainGraphToolStripMenuItem.Click += new System.EventHandler(this.MainGraphToolStripMenuItem_Click);
             // 
@@ -423,7 +476,7 @@
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Home";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -477,6 +530,10 @@
         private System.Windows.Forms.ToolStripMenuItem individualGraphToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mainGraphToolStripMenuItem;
         private System.Windows.Forms.Label lbldevice;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbunit;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 

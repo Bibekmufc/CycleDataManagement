@@ -8,16 +8,16 @@ namespace CycleDataManagement
 {
     class Calculate
     {
-        public static decimal Average(List<string> value)
+        public static double Average(List<string> value)
         {
-            var sum = 0;
+            double sum = 0;
 
             foreach (var val in value)
             {
-                sum = sum + Int32.Parse(val);
+                sum = sum + double.Parse(val);
             }
 
-            decimal result = (sum / value.Count);
+            double result = (sum / value.Count);
             return result;
         }
 
@@ -32,15 +32,15 @@ namespace CycleDataManagement
 
             return sum;
         }
-        public static int Max(List<string> value)
+        public static double Max(List<string> value)
         {
-            int maxVal = 0;
+            double maxVal = 0;
 
             for (int i = 0; i < value.Count; i++)
             {
-                if (maxVal < Int32.Parse(value.ElementAt(i)))
+                if (maxVal < double.Parse(value.ElementAt(i)))
                 {
-                    maxVal = Int32.Parse(value.ElementAt(i));
+                    maxVal = double.Parse(value.ElementAt(i));
                 }
             }
 

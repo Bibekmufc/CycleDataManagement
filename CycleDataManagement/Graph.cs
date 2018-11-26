@@ -47,6 +47,15 @@ namespace CycleDataManagement
             }
             return pr;
         }
+        private PointPairList BuildPointPairList(double[] value)
+        {
+            PointPairList pr = new PointPairList();
+            for (int i = 0; i < value.Count(); i++)
+            {
+                pr.Add(i, (value[i]));
+            }
+            return pr;
+        }
         private void MapGraph()
         {
             GraphPane myPane = zGraph.GraphPane;
@@ -64,7 +73,7 @@ namespace CycleDataManagement
 
             List<int> hr = _heartRate.Select(s => Convert.ToInt32(s)).ToList();
             heartPairList = BuildPointPairList(hr.ToArray());
-            List<int> c2 = _speed.Select(s => Convert.ToInt32(s)).ToList();
+            List<double> c2 = _speed.Select(s => Convert.ToDouble(s)).ToList();
             speedPairList = BuildPointPairList(c2.ToArray());
             List<int> c3 = _cadence.Select(s => Convert.ToInt32(s)).ToList();
             cadencePairList = BuildPointPairList(c3.ToArray());
@@ -88,7 +97,6 @@ namespace CycleDataManagement
             LineItem altitudeCurve = myPane.AddCurve("Altitude",
                   altitudePairList, Color.DarkGoldenrod, SymbolType.None
                   );
-
             zGraph.AxisChange();
         }
 
@@ -97,10 +105,6 @@ namespace CycleDataManagement
             zGraph.Location = new Point(0, 0);
             zGraph.IsShowPointValues = true;
             zGraph.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
-
         }
-
     }
-
-
 }
