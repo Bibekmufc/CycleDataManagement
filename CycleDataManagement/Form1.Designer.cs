@@ -31,6 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbldevice = new System.Windows.Forms.Label();
+            this.lblStartTime = new System.Windows.Forms.Label();
+            this.lbl11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lbldate = new System.Windows.Forms.Label();
+            this.lblinterval = new System.Windows.Forms.Label();
+            this.lbl9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblavhrate = new System.Windows.Forms.Label();
             this.lbl4 = new System.Windows.Forms.Label();
@@ -49,31 +57,26 @@
             this.lbl2 = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblstar = new System.Windows.Forms.Label();
-            this.lbl11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lbldate = new System.Windows.Forms.Label();
-            this.lblinterval = new System.Windows.Forms.Label();
-            this.lbl9 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Open = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graph = new System.Windows.Forms.ToolStripMenuItem();
+            this.individualGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
-            this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(3, 6);
@@ -89,15 +92,95 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.panel2);
             this.splitContainer1.Panel1.Controls.Add(this.panel3);
             this.splitContainer1.Panel1.Controls.Add(this.dataGrid);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
+            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.splitContainer1.Size = new System.Drawing.Size(1095, 615);
-            this.splitContainer1.SplitterDistance = 835;
+            this.splitContainer1.SplitterDistance = 1066;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.lbldevice);
+            this.panel2.Controls.Add(this.lblStartTime);
+            this.panel2.Controls.Add(this.lbl11);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.lbldate);
+            this.panel2.Controls.Add(this.lblinterval);
+            this.panel2.Controls.Add(this.lbl9);
+            this.panel2.Location = new System.Drawing.Point(810, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(253, 342);
+            this.panel2.TabIndex = 0;
+            // 
+            // lbldevice
+            // 
+            this.lbldevice.AutoSize = true;
+            this.lbldevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldevice.Location = new System.Drawing.Point(14, 31);
+            this.lbldevice.Name = "lbldevice";
+            this.lbldevice.Size = new System.Drawing.Size(166, 29);
+            this.lbldevice.TabIndex = 11;
+            this.lbldevice.Text = "Device Name";
+            // 
+            // lblStartTime
+            // 
+            this.lblStartTime.AutoSize = true;
+            this.lblStartTime.Location = new System.Drawing.Point(105, 190);
+            this.lblStartTime.Name = "lblStartTime";
+            this.lblStartTime.Size = new System.Drawing.Size(31, 17);
+            this.lblStartTime.TabIndex = 3;
+            this.lblStartTime.Text = "N/A";
+            // 
+            // lbl11
+            // 
+            this.lbl11.AutoSize = true;
+            this.lbl11.Location = new System.Drawing.Point(16, 190);
+            this.lbl11.Name = "lbl11";
+            this.lbl11.Size = new System.Drawing.Size(85, 17);
+            this.lbl11.TabIndex = 3;
+            this.lbl11.Text = "Start Time : ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 242);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(66, 17);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Interval : ";
+            // 
+            // lbldate
+            // 
+            this.lbldate.AutoSize = true;
+            this.lbldate.Location = new System.Drawing.Point(72, 143);
+            this.lbldate.Name = "lbldate";
+            this.lbldate.Size = new System.Drawing.Size(31, 17);
+            this.lbldate.TabIndex = 0;
+            this.lbldate.Text = "N/A";
+            // 
+            // lblinterval
+            // 
+            this.lblinterval.AutoSize = true;
+            this.lblinterval.Location = new System.Drawing.Point(105, 242);
+            this.lblinterval.Name = "lblinterval";
+            this.lblinterval.Size = new System.Drawing.Size(31, 17);
+            this.lblinterval.TabIndex = 2;
+            this.lblinterval.Text = "N/A";
+            // 
+            // lbl9
+            // 
+            this.lbl9.AutoSize = true;
+            this.lbl9.Location = new System.Drawing.Point(16, 143);
+            this.lbl9.Name = "lbl9";
+            this.lbl9.Size = new System.Drawing.Size(50, 17);
+            this.lbl9.TabIndex = 0;
+            this.lbl9.Text = "Date : ";
             // 
             // panel3
             // 
@@ -120,7 +203,7 @@
             this.panel3.Controls.Add(this.lbl1);
             this.panel3.Location = new System.Drawing.Point(0, 351);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(832, 261);
+            this.panel3.Size = new System.Drawing.Size(1063, 261);
             this.panel3.TabIndex = 1;
             // 
             // lblavhrate
@@ -270,86 +353,18 @@
             // dataGrid
             // 
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(0, 0);
+            this.dataGrid.Location = new System.Drawing.Point(0, 3);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.RowTemplate.Height = 24;
-            this.dataGrid.Size = new System.Drawing.Size(832, 345);
+            this.dataGrid.Size = new System.Drawing.Size(804, 342);
             this.dataGrid.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.lblstar);
-            this.panel2.Controls.Add(this.lbl11);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.lbldate);
-            this.panel2.Controls.Add(this.lblinterval);
-            this.panel2.Controls.Add(this.lbl9);
-            this.panel2.Location = new System.Drawing.Point(23, 192);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(207, 219);
-            this.panel2.TabIndex = 0;
-            // 
-            // lblstar
-            // 
-            this.lblstar.AutoSize = true;
-            this.lblstar.Location = new System.Drawing.Point(118, 84);
-            this.lblstar.Name = "lblstar";
-            this.lblstar.Size = new System.Drawing.Size(31, 17);
-            this.lblstar.TabIndex = 3;
-            this.lblstar.Text = "N/A";
-            // 
-            // lbl11
-            // 
-            this.lbl11.AutoSize = true;
-            this.lbl11.Location = new System.Drawing.Point(29, 84);
-            this.lbl11.Name = "lbl11";
-            this.lbl11.Size = new System.Drawing.Size(85, 17);
-            this.lbl11.TabIndex = 3;
-            this.lbl11.Text = "Start Time : ";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(29, 136);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 17);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Interval : ";
-            // 
-            // lbldate
-            // 
-            this.lbldate.AutoSize = true;
-            this.lbldate.Location = new System.Drawing.Point(118, 37);
-            this.lbldate.Name = "lbldate";
-            this.lbldate.Size = new System.Drawing.Size(31, 17);
-            this.lbldate.TabIndex = 0;
-            this.lbldate.Text = "N/A";
-            // 
-            // lblinterval
-            // 
-            this.lblinterval.AutoSize = true;
-            this.lblinterval.Location = new System.Drawing.Point(118, 136);
-            this.lblinterval.Name = "lblinterval";
-            this.lblinterval.Size = new System.Drawing.Size(31, 17);
-            this.lblinterval.TabIndex = 2;
-            this.lblinterval.Text = "N/A";
-            // 
-            // lbl9
-            // 
-            this.lbl9.AutoSize = true;
-            this.lbl9.Location = new System.Drawing.Point(29, 37);
-            this.lbl9.Name = "lbl9";
-            this.lbl9.Size = new System.Drawing.Size(50, 17);
-            this.lbl9.TabIndex = 0;
-            this.lbl9.Text = "Date : ";
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewDataToolStripMenuItem,
-            this.viewGraphToolStripMenuItem});
+            this.graph});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1095, 28);
@@ -367,15 +382,32 @@
             // Open
             // 
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(216, 26);
+            this.Open.Size = new System.Drawing.Size(147, 26);
             this.Open.Text = "Open File";
             this.Open.Click += new System.EventHandler(this.Open_Click);
             // 
-            // viewGraphToolStripMenuItem
+            // graph
             // 
-            this.viewGraphToolStripMenuItem.Name = "viewGraphToolStripMenuItem";
-            this.viewGraphToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
-            this.viewGraphToolStripMenuItem.Text = "View Graph";
+            this.graph.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.individualGraphToolStripMenuItem,
+            this.mainGraphToolStripMenuItem});
+            this.graph.Name = "graph";
+            this.graph.Size = new System.Drawing.Size(97, 24);
+            this.graph.Text = "View Graph";
+            // 
+            // individualGraphToolStripMenuItem
+            // 
+            this.individualGraphToolStripMenuItem.Name = "individualGraphToolStripMenuItem";
+            this.individualGraphToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.individualGraphToolStripMenuItem.Text = "Individual Graph";
+            this.individualGraphToolStripMenuItem.Click += new System.EventHandler(this.IndividualGraphToolStripMenuItem_Click);
+            // 
+            // mainGraphToolStripMenuItem
+            // 
+            this.mainGraphToolStripMenuItem.Name = "mainGraphToolStripMenuItem";
+            this.mainGraphToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.mainGraphToolStripMenuItem.Text = "Main Graph";
+            this.mainGraphToolStripMenuItem.Click += new System.EventHandler(this.MainGraphToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -387,7 +419,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 653);
+            this.ClientSize = new System.Drawing.Size(1096, 645);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -395,14 +427,13 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -414,7 +445,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewGraphToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem graph;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGrid;
@@ -439,10 +470,13 @@
         private System.Windows.Forms.Label lblavalt;
         private System.Windows.Forms.Label lblavspeed;
         private System.Windows.Forms.Label lbltotal;
-        private System.Windows.Forms.Label lblstar;
+        private System.Windows.Forms.Label lblStartTime;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lbldate;
         private System.Windows.Forms.ToolStripMenuItem Open;
+        private System.Windows.Forms.ToolStripMenuItem individualGraphToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mainGraphToolStripMenuItem;
+        private System.Windows.Forms.Label lbldevice;
     }
 }
 

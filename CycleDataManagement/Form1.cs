@@ -16,6 +16,8 @@ namespace CycleDataManagement
     {
         public Dictionary<string, List<string>> Data = new Dictionary<string, List<string>>();
         private Dictionary<string, string> parameter = new Dictionary<string, string>();
+        public string[] device = new string[] { };
+        public int[] arrayTime = { };
         public List<string> paraArrays = new List<string>();
         public List<string> speed = new List<string>();
         public List<string> cadence = new List<string>();
@@ -24,6 +26,8 @@ namespace CycleDataManagement
         public List<string> heartRate = new List<string>();
         public List<string> powerBalancePedalling = new List<string>();
         int counter = 0;
+        int interval = 0;
+        DateTime dt = new DateTime();
         char[] findOf = { '\t', ' ', '=' };
 
 
@@ -36,12 +40,13 @@ namespace CycleDataManagement
         //specifying column header
         private void InitializeGrid()
         {
-            dataGrid.ColumnCount = 5;
-            dataGrid.Columns[0].Name = "Heart Rate (bpm)";
-            dataGrid.Columns[1].Name = "Speed (km/h)";
-            dataGrid.Columns[2].Name = "Cadence (rpm)";
-            dataGrid.Columns[3].Name = "Altitude (m/ft)";
-            dataGrid.Columns[4].Name = "Power (watts)";
+            dataGrid.ColumnCount = 6;
+            dataGrid.Columns[5].Name = "Time (HH:MM:SS)";
+            dataGrid.Columns[0].Name = "Heart Rate (BPM)";
+            dataGrid.Columns[1].Name = "Speed (KM/H)";
+            dataGrid.Columns[2].Name = "Cadence (RPM)";
+            dataGrid.Columns[3].Name = "Altitude (M/FT)";
+            dataGrid.Columns[4].Name = "Power (WATTS)";
         }
 
         private void Open_Click(object sender, EventArgs e)
@@ -61,8 +66,7 @@ namespace CycleDataManagement
             op.Filter = "HRM|*.hrm|Text Document|*.txt";
             op.Title = "Open File";
             // Display the file select dialog box.  
-            // If the user clicked OK in the dialog then  ,
-            if (op.ShowDialog() == DialogResult.OK)
+            if (op.ShowDialog() == DialogResult.OK)   //if users selects a file and opens it
             {
                 FileStream fs = (FileStream)op.OpenFile();
                 StreamReader sr = new StreamReader(fs);
@@ -81,17 +85,14 @@ namespace CycleDataManagement
                     }
 
                 }
-                try
-                {
                     for (int i = 1; i < paraArrays.Count(); i += 2)
                     {
-                        parameter.Add(paraArrays[i], paraArrays[0 + i]);
+                        parameter.Add(paraArrays[i], paraArrays[1 + i]);
+                        if (paraArrays.Any())
+                        {
+                            paraArrays.RemoveAt(paraArrays.Count - 1);
+                        }
                     }
-                }
-                catch (IndexOutOfRangeException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
 
                 while (!sr.EndOfStream)
                 {
@@ -109,16 +110,18 @@ namespace CycleDataManagement
                 DataDictionary();
 
 
-                if (parameter.ContainsKey("Date"))
+               if (parameter.ContainsKey("Date"))
                 {
-                    string date = parameter["Date"];
-                    DateTime dt = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                    lbldate.Text = dt.ToString("dddd, MMMM dd yyyy");
+                    string dateTime = parameter["Date"];
+                    DateTime date = DateTime.ParseExact(dateTime, "yyyyMMdd", CultureInfo.InvariantCulture);
+                    lbldate.Text = date.ToString("dddd, MMMM dd yyyy");
                 }
+                lbldevice.Text = deviceName(parameter["Monitor"]);
+
                 if (parameter.ContainsKey("StartTime"))
                 {
                     string time = parameter["StartTime"];
-                    lblstar.Text = time;
+                    lblStartTime.Text = time;
                 }
                 if (parameter.ContainsKey("Interval"))
                 {
@@ -126,8 +129,36 @@ namespace CycleDataManagement
                     lblinterval.Text = intval;
                 }
 
-
             }
+        }
+        private string deviceName(string val)
+        {
+            string[] device = {
+                "Polar Sport Tester / Vantage XL",
+                "Polar Vantage NV(VNV)",         "Polar Accurex Plus",         "Polar XTrainer Plus",                "N/A",                "Polar S520",                "Polar Coach",
+                "Polar S210",
+                "Polar S410",
+                "Polar S510",
+                "Polar S610 / S610i",
+                "Polar S710 / S710i / S720i",
+                "Polar S810 / S810i",
+                "N/A",
+                "Polar E600",
+                "N/A", "N/A", "N/A", "N/A",
+                "Polar AXN500",
+                "Polar AXN700",
+                "Polar S625X / S725X",
+                "Polar S725",
+                "N/A","N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A",
+                "Polar CS400",
+                "Polar CS600X",
+                "Polar CS600",
+                "Polar RS400",
+                "Polar RS800",
+                "Polar RS800X"
+        };
+            string dev = device[Convert.ToInt16(val)];
+            return dev;
         }
         //split data and adding into list array
         public void sortDataToArray(string line)
@@ -152,6 +183,15 @@ namespace CycleDataManagement
             }
         }
 
+     /*   public string calcTime(string time)
+        {
+            // fetch the en-GB culture
+            CultureInfo ci = new CultureInfo("en-GB");
+            dt = DateTime.ParseExact(time, "HH:mm:ss", ci.DateTimeFormat);
+            string result = dt.AddSeconds(interval).ToString("HH:mm:ss");
+            return result;
+        } */
+
         //displayed list data to grid view table
         public void viewData()
         {
@@ -159,12 +199,15 @@ namespace CycleDataManagement
             int counter = 0;
             foreach (var value in speed)
             {
-                dataGrid.Rows.Add(heartRate[counter]
+                dataGrid.Rows.Add(/*calcTime(parameter["StartTime"])*/
+                     heartRate[counter]
                     , speed[counter]
                     , cadence[counter]
                     , altitude[counter]
-                    , power[counter]);
+                    , power[counter]
+                    );
                 counter++;
+                interval = interval + 1;
             }
         }
 
@@ -183,7 +226,7 @@ namespace CycleDataManagement
         private void Calc()
         {
             var maxSpeed = Calculate.Max(Data["speed"]);
-            //var totalDistanceCovered = Summary.Sum(hrData["cadence"]);
+            var totalDistanceCovered = Calculate.Sum(Data["speed"]);
             var averageSpeed = Calculate.Average(Data["speed"]);
             var averageHeartRate = Calculate.Average(Data["heartRate"]);
             var maximumHeartRate = Calculate.Max(Data["heartRate"]);
@@ -196,7 +239,7 @@ namespace CycleDataManagement
             var maximumAltitude = Calculate.Max(Data["altitude"]);
 
             //summary of data 
-            lbltotal.Text = null;
+            lbltotal.Text = totalDistanceCovered.ToString();
             lblavspeed.Text = averageSpeed.ToString();
             lblmaxspeed.Text = maxSpeed.ToString();
             lblavhrate.Text = averageHeartRate.ToString();
@@ -208,5 +251,18 @@ namespace CycleDataManagement
 
 
         }
+
+        private void IndividualGraphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Individual i = new Individual(heartRate, speed, cadence, altitude, power);
+            i.Show();
+        }
+
+        private void MainGraphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Graph g = new Graph(heartRate, speed, cadence, altitude, power);
+            g.Show();
+        }
     }
 }
+ 
