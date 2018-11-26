@@ -39,11 +39,13 @@
             this.zcadence = new ZedGraph.ZedGraphControl();
             this.zspeed = new ZedGraph.ZedGraphControl();
             this.zheart = new ZedGraph.ZedGraphControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.rdAltitude);
             this.panel1.Controls.Add(this.rdPower);
             this.panel1.Controls.Add(this.rdCadence);
@@ -164,6 +166,16 @@
             this.zheart.Size = new System.Drawing.Size(1127, 290);
             this.zheart.TabIndex = 5;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(313, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(468, 29);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Please select a category for its graph";
+            // 
             // Individual
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -192,5 +204,6 @@
         private System.Windows.Forms.RadioButton rdCadence;
         private System.Windows.Forms.RadioButton rdSpeed;
         private System.Windows.Forms.RadioButton rdHR;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -123,7 +123,7 @@
             // lbldevice
             // 
             this.lbldevice.AutoSize = true;
-            this.lbldevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldevice.Location = new System.Drawing.Point(14, 31);
             this.lbldevice.Name = "lbldevice";
             this.lbldevice.Size = new System.Drawing.Size(166, 29);
@@ -133,7 +133,7 @@
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(105, 190);
+            this.lblStartTime.Location = new System.Drawing.Point(105, 172);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(31, 17);
             this.lblStartTime.TabIndex = 3;
@@ -142,7 +142,7 @@
             // lbl11
             // 
             this.lbl11.AutoSize = true;
-            this.lbl11.Location = new System.Drawing.Point(16, 190);
+            this.lbl11.Location = new System.Drawing.Point(16, 172);
             this.lbl11.Name = "lbl11";
             this.lbl11.Size = new System.Drawing.Size(85, 17);
             this.lbl11.TabIndex = 3;
@@ -151,7 +151,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 242);
+            this.label10.Location = new System.Drawing.Point(16, 224);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(66, 17);
             this.label10.TabIndex = 2;
@@ -160,7 +160,7 @@
             // lbldate
             // 
             this.lbldate.AutoSize = true;
-            this.lbldate.Location = new System.Drawing.Point(72, 143);
+            this.lbldate.Location = new System.Drawing.Point(72, 125);
             this.lbldate.Name = "lbldate";
             this.lbldate.Size = new System.Drawing.Size(31, 17);
             this.lbldate.TabIndex = 0;
@@ -169,7 +169,7 @@
             // lblinterval
             // 
             this.lblinterval.AutoSize = true;
-            this.lblinterval.Location = new System.Drawing.Point(105, 242);
+            this.lblinterval.Location = new System.Drawing.Point(105, 224);
             this.lblinterval.Name = "lblinterval";
             this.lblinterval.Size = new System.Drawing.Size(31, 17);
             this.lblinterval.TabIndex = 2;
@@ -178,7 +178,7 @@
             // lbl9
             // 
             this.lbl9.AutoSize = true;
-            this.lbl9.Location = new System.Drawing.Point(16, 143);
+            this.lbl9.Location = new System.Drawing.Point(16, 125);
             this.lbl9.Name = "lbl9";
             this.lbl9.Size = new System.Drawing.Size(50, 17);
             this.lbl9.TabIndex = 0;
@@ -214,7 +214,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(805, 58);
+            this.label1.Location = new System.Drawing.Point(833, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 26);
             this.label1.TabIndex = 12;
@@ -226,11 +226,11 @@
             this.cmbunit.Items.AddRange(new object[] {
             "mph",
             "kmph"});
-            this.cmbunit.Location = new System.Drawing.Point(810, 99);
+            this.cmbunit.Location = new System.Drawing.Point(838, 84);
             this.cmbunit.Name = "cmbunit";
             this.cmbunit.Size = new System.Drawing.Size(199, 24);
             this.cmbunit.TabIndex = 11;
-            this.cmbunit.SelectedIndexChanged += new System.EventHandler(this.cmbunit_SelectedIndexChanged);
+            this.cmbunit.SelectedIndexChanged += new System.EventHandler(this.Cmbunit_SelectedIndexChanged);
             // 
             // lblavhrate
             // 

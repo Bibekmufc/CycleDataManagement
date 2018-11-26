@@ -44,7 +44,7 @@ namespace CycleDataManagement
         {
             InitializeComponent();
             InitializeGrid();
-            cmbunit.SelectedIndex = 0;
+            cmbunit.SelectedIndex = 0; //default speed unit
         }
 
         //specifying column header
@@ -65,7 +65,7 @@ namespace CycleDataManagement
             dataGrid.DataSource = null;
             dataGrid.Rows.Clear();
             ReadSource();
-            viewData();
+            ViewData();
             Calc();
         }
 
@@ -120,7 +120,7 @@ namespace CycleDataManagement
                     }
                 }
 
-                //adding hr data to dictionary for easy access
+                //adding data to dictionary for eas of access
                 DataDictionary();
 
 
@@ -145,6 +145,7 @@ namespace CycleDataManagement
 
             }
         }
+        //array for devices
         private string deviceName(string val)
         {
             string[] device = {
@@ -229,9 +230,9 @@ namespace CycleDataManagement
         }
 
 
-        public string calcTime(string time)
+        public string CalcTime(string time)
         {
-            // fetch the en-GB culture
+            // fetch the en-GB culture for time to be displayed in British format
             CultureInfo ci = new CultureInfo("en-GB");
             dt = DateTime.ParseExact(time, "HH:mm:ss.f", ci.DateTimeFormat);
             string result = dt.AddSeconds(interval).ToString("HH:mm:ss.f");
@@ -239,14 +240,14 @@ namespace CycleDataManagement
         }
 
         //displayed list data to grid view table
-        public void viewData()
+        public void ViewData()
         {
             if (cmbunit.SelectedIndex == 0)
             {
                 int counter = 0;
                 foreach (var value in speed)
                 {
-                    dataGrid.Rows.Add(calcTime(parameter["StartTime"])
+                    dataGrid.Rows.Add(CalcTime(parameter["StartTime"])
                         , heartRate[counter]
                         , speed[counter]
                         , speed_miles[counter]
@@ -260,11 +261,12 @@ namespace CycleDataManagement
             }
 }
 
-        //adding HRdata to dictionary 
+        //adding data to dictionary 
         private void DataDictionary()
         {
             Data.Add("heartRate", heartRate);
             Data.Add("speed", speed);
+            Data.Add("speed_miles", speed_miles);
             Data.Add("cadence", cadence);
             Data.Add("altitude", altitude);
             Data.Add("power", power);
@@ -276,10 +278,14 @@ namespace CycleDataManagement
         {
             var maxSpeed = Calculate.Max(Data["speed"]);
             var totalDistanceCovered = Calculate.Sum(Data["speed"]);
-            var averageSpeed = Calculate.Average(Data["speed"]);
+            double averageSpeed = Calculate.Average(Data["speed"]);
+            double avSpeed = Calculate.Average(Data["speed"]);
             var averageHeartRate = Calculate.Average(Data["heartRate"]);
             var maximumHeartRate = Calculate.Max(Data["heartRate"]);
             var minimumHeartRate = Calculate.Min(Data["heartRate"]);
+
+            var totalDistance = Calculate.Total(avSpeed, dataGrid.RowCount, Int32.Parse(parameter["Interval"]));
+
 
             var averagePower = Calculate.Average(Data["power"]);
             var maximumPower = Calculate.Max(Data["power"]);
@@ -287,21 +293,20 @@ namespace CycleDataManagement
             var averageAltitude = Calculate.Average(Data["altitude"]);
             var maximumAltitude = Calculate.Max(Data["altitude"]);
 
-            //summary of data 
-            lbltotal.Text = totalDistanceCovered.ToString();
-            lblavspeed.Text = averageSpeed.ToString();
-            lblmaxspeed.Text = maxSpeed.ToString();
-            lblavhrate.Text = averageHeartRate.ToString();
-            lblmaxhrate.Text = maximumHeartRate.ToString() + "" + "BPM";
-            lblavhrate.Text = minimumHeartRate.ToString();
-            lblavpwr.Text = averagePower.ToString();
-            lblmaxpwr.Text = maximumPower.ToString();
-            lblavalt.Text = averageAltitude.ToString();
-
-
+            //summary of data to be displayed
+            lbltotal.Text = RoundOff(totalDistance) + " km";
+            lblavspeed.Text = RoundOff(averageSpeed) + " km/h";
+            lblmaxspeed.Text = RoundOff(maxSpeed) + " km/h";
+            lblavhrate.Text = RoundOff(averageHeartRate) + "  BPM";
+            lblmaxhrate.Text = RoundOff(maximumHeartRate) + "  BPM";
+            lblavhrate.Text = RoundOff(minimumHeartRate) + "  BPM";
+            lblavpwr.Text = RoundOff(averagePower) + "  watt";
+            lblmaxpwr.Text = RoundOff(maximumPower) + "  watt";
+            lblavalt.Text = RoundOff(averageAltitude) + " m/ft";
         }
 
-        private void cmbunit_SelectedIndexChanged(object sender, EventArgs e)
+        //combobox to select speed unit
+        private void Cmbunit_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbunit.SelectedIndex == 0)
             {
@@ -313,44 +318,19 @@ namespace CycleDataManagement
             dataGrid.Columns[2].Visible = false;
         }
 
-        private void arrayNuller()
+        private static double RoundOff(double val)
         {
-            Data = new Dictionary<string, List<string>>();
-            parameter = new Dictionary<string, string>();
-            paraArrays = new List<string>();
-            arrayTime = new int[] { };
-            heartRate = new List<string>();
-            speed = new List<string>();
-            cadence = new List<string>();
-            altitude = new List<string>();
-            power = new List<string>();
-            powerBalancePedalling = new List<string>();
-            device = new string[] { };
-            counter = 0;
-            interval = 0;
-            findOf = new char[] { };
-            dataGrid.DataSource = null;
-            dataGrid.Rows.Clear();
-
-            lbltotal.Text = "";
-            lblavspeed.Text = "";
-            lblmaxspeed.Text = "";
-            lblavhrate.Text = "";
-            lblmaxhrate.Text = "";
-            lblavpwr.Text = "";
-            lblmaxpwr.Text = "";
-            lblavalt.Text = "";
-            lbldevice.Text = "";
-            lblStartTime.Text = "";
-            lblinterval.Text = "";
+            double data = Math.Round(val, 2, MidpointRounding.AwayFromZero);
+            return data;
         }
-
+        //submenustrip for individual graph
         private void IndividualGraphToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Individual i = new Individual(heartRate, speed, cadence, altitude, power);
             i.Show();
         }
 
+        //menu for main graph
         private void MainGraphToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Graph g = new Graph(heartRate, speed, cadence, altitude, power);

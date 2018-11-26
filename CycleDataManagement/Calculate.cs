@@ -62,5 +62,12 @@ namespace CycleDataManagement
             return minVal;
         }
 
+        public static double Total(double average, int count, int interval)
+        {
+            var time = TimeSpan.FromSeconds(count * interval);
+            double total1 = average * time.TotalHours;
+            return total1;
+        }
+
     }
 }
