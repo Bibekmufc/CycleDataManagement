@@ -40,8 +40,6 @@
             this.lblinterval = new System.Windows.Forms.Label();
             this.lbl9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbunit = new System.Windows.Forms.ComboBox();
             this.lblavhrate = new System.Windows.Forms.Label();
@@ -189,8 +187,6 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.cmbunit);
             this.panel3.Controls.Add(this.lblavhrate);
@@ -214,30 +210,6 @@
             this.panel3.Size = new System.Drawing.Size(1063, 261);
             this.panel3.TabIndex = 1;
             // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(810, 197);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 21);
-            this.radioButton2.TabIndex = 14;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Miles";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(810, 163);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(49, 21);
-            this.radioButton1.TabIndex = 13;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "KM";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -258,6 +230,7 @@
             this.cmbunit.Name = "cmbunit";
             this.cmbunit.Size = new System.Drawing.Size(199, 24);
             this.cmbunit.TabIndex = 11;
+            this.cmbunit.SelectedIndexChanged += new System.EventHandler(this.cmbunit_SelectedIndexChanged);
             // 
             // lblavhrate
             // 
@@ -532,8 +505,6 @@
         private System.Windows.Forms.Label lbldevice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbunit;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 

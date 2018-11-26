@@ -50,13 +50,14 @@ namespace CycleDataManagement
         //specifying column header
         private void InitializeGrid()
         {
-            dataGrid.ColumnCount = 6;
+            dataGrid.ColumnCount = 7;
             dataGrid.Columns[0].Name = "Time (HH:MM:SS)";
             dataGrid.Columns[1].Name = "Heart Rate (BPM)";
             dataGrid.Columns[2].Name = "Speed (KM/H)";
-            dataGrid.Columns[3].Name = "Cadence (RPM)";
-            dataGrid.Columns[4].Name = "Altitude (M/FT)";
-            dataGrid.Columns[5].Name = "Power (WATTS)";
+            dataGrid.Columns[3].Name = "Speed (MPH)";
+            dataGrid.Columns[4].Name = "Cadence (RPM)";
+            dataGrid.Columns[5].Name = "Altitude (M/FT)";
+            dataGrid.Columns[6].Name = "Power (WATTS)";
         }
 
         private void Open_Click(object sender, EventArgs e)
@@ -240,67 +241,24 @@ namespace CycleDataManagement
         //displayed list data to grid view table
         public void viewData()
         {
-
-            int counter = 0;
-            foreach (var value in speed)
+            if (cmbunit.SelectedIndex == 0)
             {
-                dataGrid.Rows.Add(calcTime(parameter["StartTime"])
-                    , heartRate[counter]
-                    , speed[counter]
-                    , cadence[counter]
-                    , altitude[counter]
-                    , power[counter]
-                    );
-                counter++;
-                interval = interval + 1;
-    }
-}
-
-        private void CalculateSpeed(string type)
-        {
-            if (Data.Count > 0)
-            {
-                List<string> data = new List<string>();
-                if (type == "Miles")
+                int counter = 0;
+                foreach (var value in speed)
                 {
-                    dataGrid.Columns[2].Name = "Speed(Mile/hr)";
-
-                    data.Clear();
-                    for (int i = 0; i < Data.Count; i++)
-                    {
-                        string temp = (Convert.ToDouble(Data["speed"][i]) / 100).ToString();
-                        data.Add(temp);
-                    }
-
-                    Data["speed"].Clear();
-                    Data["speed"] = data;
-
-                    //dataGridView1.SelectedCells[0].Value = 10.ToString();
-                    //dataGridView1.SelectedCells[1].Value = 10.ToString();
-
-                    //dataGrid.Update();
-                    //dataGrid.Refresh();
-                }
-                else
-                {
-                    dataGrid.Columns[2].Name = "Speed(km/hr)";
-
-                    data.Clear();
-                    for (int i = 0; i < Data.Count; i++)
-                    {
-                        string temp = (Convert.ToDouble(Data["speed"][i]) / 1.5).ToString();
-                        data.Add(temp);
-                    }
-
-                    Data["speed"].Clear();
-                    Data["speed"] = data;
-
-                    dataGrid.Update();
-                    dataGrid.Refresh();
+                    dataGrid.Rows.Add(calcTime(parameter["StartTime"])
+                        , heartRate[counter]
+                        , speed[counter]
+                        , speed_miles[counter]
+                        , cadence[counter]
+                        , altitude[counter]
+                        , power[counter]
+                        );
+                    counter++;
+                    interval = interval + 1;
                 }
             }
-        }
-
+}
 
         //adding HRdata to dictionary 
         private void DataDictionary()
@@ -343,14 +301,16 @@ namespace CycleDataManagement
 
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void cmbunit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CalculateSpeed("KM");
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            CalculateSpeed("Miles");
+            if (cmbunit.SelectedIndex == 0)
+            {
+                dataGrid.Columns[2].Visible = true;
+                dataGrid.Columns[3].Visible = false;
+                return;
+            }
+            dataGrid.Columns[3].Visible = true;
+            dataGrid.Columns[2].Visible = false;
         }
 
         private void arrayNuller()
