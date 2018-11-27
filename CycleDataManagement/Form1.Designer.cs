@@ -83,7 +83,7 @@
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(3, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1095, 643);
+            this.panel1.Size = new System.Drawing.Size(1124, 654);
             this.panel1.TabIndex = 0;
             // 
             // splitContainer1
@@ -101,8 +101,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.splitContainer1.Size = new System.Drawing.Size(1095, 615);
-            this.splitContainer1.SplitterDistance = 1066;
+            this.splitContainer1.Size = new System.Drawing.Size(1124, 626);
+            this.splitContainer1.SplitterDistance = 1095;
             this.splitContainer1.TabIndex = 2;
             // 
             // panel2
@@ -117,14 +117,14 @@
             this.panel2.Controls.Add(this.lbl9);
             this.panel2.Location = new System.Drawing.Point(810, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(253, 342);
+            this.panel2.Size = new System.Drawing.Size(266, 342);
             this.panel2.TabIndex = 0;
             // 
             // lbldevice
             // 
             this.lbldevice.AutoSize = true;
             this.lbldevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldevice.Location = new System.Drawing.Point(14, 31);
+            this.lbldevice.Location = new System.Drawing.Point(23, 38);
             this.lbldevice.Name = "lbldevice";
             this.lbldevice.Size = new System.Drawing.Size(166, 29);
             this.lbldevice.TabIndex = 11;
@@ -133,7 +133,7 @@
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(105, 172);
+            this.lblStartTime.Location = new System.Drawing.Point(114, 179);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(31, 17);
             this.lblStartTime.TabIndex = 3;
@@ -142,7 +142,7 @@
             // lbl11
             // 
             this.lbl11.AutoSize = true;
-            this.lbl11.Location = new System.Drawing.Point(16, 172);
+            this.lbl11.Location = new System.Drawing.Point(25, 179);
             this.lbl11.Name = "lbl11";
             this.lbl11.Size = new System.Drawing.Size(85, 17);
             this.lbl11.TabIndex = 3;
@@ -151,7 +151,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 224);
+            this.label10.Location = new System.Drawing.Point(25, 231);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(66, 17);
             this.label10.TabIndex = 2;
@@ -160,7 +160,7 @@
             // lbldate
             // 
             this.lbldate.AutoSize = true;
-            this.lbldate.Location = new System.Drawing.Point(72, 125);
+            this.lbldate.Location = new System.Drawing.Point(81, 132);
             this.lbldate.Name = "lbldate";
             this.lbldate.Size = new System.Drawing.Size(31, 17);
             this.lbldate.TabIndex = 0;
@@ -169,7 +169,7 @@
             // lblinterval
             // 
             this.lblinterval.AutoSize = true;
-            this.lblinterval.Location = new System.Drawing.Point(105, 224);
+            this.lblinterval.Location = new System.Drawing.Point(114, 231);
             this.lblinterval.Name = "lblinterval";
             this.lblinterval.Size = new System.Drawing.Size(31, 17);
             this.lblinterval.TabIndex = 2;
@@ -178,7 +178,7 @@
             // lbl9
             // 
             this.lbl9.AutoSize = true;
-            this.lbl9.Location = new System.Drawing.Point(16, 125);
+            this.lbl9.Location = new System.Drawing.Point(25, 132);
             this.lbl9.Name = "lbl9";
             this.lbl9.Size = new System.Drawing.Size(50, 17);
             this.lbl9.TabIndex = 0;
@@ -207,7 +207,7 @@
             this.panel3.Controls.Add(this.lbl1);
             this.panel3.Location = new System.Drawing.Point(0, 351);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1063, 261);
+            this.panel3.Size = new System.Drawing.Size(1076, 261);
             this.panel3.TabIndex = 1;
             // 
             // label1
@@ -224,8 +224,8 @@
             // 
             this.cmbunit.FormattingEnabled = true;
             this.cmbunit.Items.AddRange(new object[] {
-            "mph",
-            "kmph"});
+            "kmph",
+            "mph"});
             this.cmbunit.Location = new System.Drawing.Point(838, 84);
             this.cmbunit.Name = "cmbunit";
             this.cmbunit.Size = new System.Drawing.Size(199, 24);
@@ -382,7 +382,7 @@
             this.dataGrid.Location = new System.Drawing.Point(0, 3);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.RowTemplate.Height = 24;
-            this.dataGrid.Size = new System.Drawing.Size(804, 342);
+            this.dataGrid.Size = new System.Drawing.Size(827, 342);
             this.dataGrid.TabIndex = 0;
             // 
             // menuStrip1
@@ -393,7 +393,7 @@
             this.graph});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1095, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1124, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -445,7 +445,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1096, 645);
+            this.ClientSize = new System.Drawing.Size(1139, 672);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
