@@ -31,6 +31,7 @@ namespace CycleDataManagement
 
         }
 
+        //average calculation
         public static double Average(List<string> value)
         {
             double sum = 0;
@@ -43,7 +44,34 @@ namespace CycleDataManagement
             double result = (sum / value.Count);
             return result;
         }
+        //average calculation
+        public static double Average(List<double> value)
+        {
+            double sum = 0;
 
+            foreach (var val in value)
+            {
+                sum = sum + val;
+            }
+
+            double result = (sum / value.Count);
+            return result;
+        }
+        //average calculation
+        public static double Average(List<int> value)
+        {
+            double sum = 0;
+
+            foreach (var val in value)
+            {
+                sum = sum + val;
+            }
+
+            double result = (sum / value.Count);
+            return result;
+        }
+
+        //sum calculation
         public static double Sum(List<string> value)
         {
             double sum = 0;
@@ -55,6 +83,8 @@ namespace CycleDataManagement
 
             return sum;
         }
+
+        //max calculation
         public static double Max(List<string> value)
         {
             double maxVal = 0;
@@ -69,7 +99,36 @@ namespace CycleDataManagement
 
             return maxVal;
         }
+        public static double Max(List<int> value)
+        {
+            double maxVal = 0;
 
+            for (int i = 0; i < value.Count; i++)
+            {
+                if (maxVal < (value.ElementAt(i)))
+                {
+                    maxVal = (value.ElementAt(i));
+                }
+            }
+
+            return maxVal;
+        }
+        public static double Max(List<double> value)
+        {
+            double maxVal = 0;
+
+            for (int i = 0; i < value.Count; i++)
+            {
+                if (maxVal < (value.ElementAt(i)))
+                {
+                    maxVal = (value.ElementAt(i));
+                }
+            }
+
+            return maxVal;
+        }
+
+        //min calculation
         public static int Min(List<string> value)
         {
             int minVal = Int32.Parse(value.ElementAt(0));
@@ -84,7 +143,22 @@ namespace CycleDataManagement
 
             return minVal;
         }
+        public static int Min(List<int> value)
+        {
+            int minVal = (value.ElementAt(0));
 
+            for (int i = 0; i < value.Count; i++)
+            {
+                if (minVal > (value.ElementAt(i)))
+                {
+                    minVal = (value.ElementAt(i));
+                }
+            }
+
+            return minVal;
+        }
+
+        //Total distance calculation
         public static double Total(double average, int count, int interval)
         {
             var time = TimeSpan.FromSeconds(count * interval);
@@ -92,6 +166,7 @@ namespace CycleDataManagement
             return total1;
         }
 
+        //Functional Threshold Power Calculation
         public string CalculateFTP()
         {
             double num = 0;
@@ -108,6 +183,7 @@ namespace CycleDataManagement
             return FTP.ToString();
         }
 
+        //Normal Power Calculation
         public string CalculateNP()
         {
             List<double> power1 = new List<double>();
@@ -154,6 +230,7 @@ namespace CycleDataManagement
 
         }
 
+        //Intensity Factor Calculation
         public string CalculateIF()
         {
             double IF1 = NP / FTP;
@@ -162,7 +239,8 @@ namespace CycleDataManagement
             return IF.ToString();
         }
 
-        public string CalculateTrainingStressScore()
+        //Training Stress Score Calculation
+        public string CalculateTSS()
         {
             string[] heart1 = heartRate.ToArray();
             int sec = heart1.Length;
@@ -172,11 +250,5 @@ namespace CycleDataManagement
 
             return TSS.ToString();
         }
-
-        private double Average(List<double> power2)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

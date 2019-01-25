@@ -32,6 +32,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cmbunit = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbldevice = new System.Windows.Forms.Label();
             this.lblStartTime = new System.Windows.Forms.Label();
             this.lbl11 = new System.Windows.Forms.Label();
@@ -40,8 +42,25 @@
             this.lblinterval = new System.Windows.Forms.Label();
             this.lbl9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbunit = new System.Windows.Forms.ComboBox();
+            this.btnview = new System.Windows.Forms.Button();
+            this.btnchunk1 = new System.Windows.Forms.Button();
+            this.btnchunk4 = new System.Windows.Forms.Button();
+            this.btnchunk3 = new System.Windows.Forms.Button();
+            this.btnchunk2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cmbChunk = new System.Windows.Forms.ComboBox();
+            this.lbltss = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblif = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblnp = new System.Windows.Forms.Label();
+            this.lblpb = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblftp = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblavhrate = new System.Windows.Forms.Label();
             this.lbl4 = new System.Windows.Forms.Label();
             this.lblmaxhrate = new System.Windows.Forms.Label();
@@ -65,6 +84,7 @@
             this.graph = new System.Windows.Forms.ToolStripMenuItem();
             this.individualGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -108,6 +128,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.cmbunit);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lbldevice);
             this.panel2.Controls.Add(this.lblStartTime);
             this.panel2.Controls.Add(this.lbl11);
@@ -119,6 +141,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(266, 342);
             this.panel2.TabIndex = 0;
+            // 
+            // cmbunit
+            // 
+            this.cmbunit.FormattingEnabled = true;
+            this.cmbunit.Items.AddRange(new object[] {
+            "kmph",
+            "mph"});
+            this.cmbunit.Location = new System.Drawing.Point(28, 277);
+            this.cmbunit.Name = "cmbunit";
+            this.cmbunit.Size = new System.Drawing.Size(198, 24);
+            this.cmbunit.TabIndex = 11;
+            this.cmbunit.SelectedIndexChanged += new System.EventHandler(this.Cmbunit_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 239);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(204, 26);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Select Speed Unit";
             // 
             // lbldevice
             // 
@@ -133,7 +177,7 @@
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(114, 179);
+            this.lblStartTime.Location = new System.Drawing.Point(114, 139);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(31, 17);
             this.lblStartTime.TabIndex = 3;
@@ -142,7 +186,7 @@
             // lbl11
             // 
             this.lbl11.AutoSize = true;
-            this.lbl11.Location = new System.Drawing.Point(25, 179);
+            this.lbl11.Location = new System.Drawing.Point(25, 139);
             this.lbl11.Name = "lbl11";
             this.lbl11.Size = new System.Drawing.Size(85, 17);
             this.lbl11.TabIndex = 3;
@@ -151,7 +195,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(25, 231);
+            this.label10.Location = new System.Drawing.Point(25, 191);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(66, 17);
             this.label10.TabIndex = 2;
@@ -160,7 +204,7 @@
             // lbldate
             // 
             this.lbldate.AutoSize = true;
-            this.lbldate.Location = new System.Drawing.Point(81, 132);
+            this.lbldate.Location = new System.Drawing.Point(81, 92);
             this.lbldate.Name = "lbldate";
             this.lbldate.Size = new System.Drawing.Size(31, 17);
             this.lbldate.TabIndex = 0;
@@ -169,7 +213,7 @@
             // lblinterval
             // 
             this.lblinterval.AutoSize = true;
-            this.lblinterval.Location = new System.Drawing.Point(114, 231);
+            this.lblinterval.Location = new System.Drawing.Point(114, 191);
             this.lblinterval.Name = "lblinterval";
             this.lblinterval.Size = new System.Drawing.Size(31, 17);
             this.lblinterval.TabIndex = 2;
@@ -178,7 +222,7 @@
             // lbl9
             // 
             this.lbl9.AutoSize = true;
-            this.lbl9.Location = new System.Drawing.Point(25, 132);
+            this.lbl9.Location = new System.Drawing.Point(25, 92);
             this.lbl9.Name = "lbl9";
             this.lbl9.Size = new System.Drawing.Size(50, 17);
             this.lbl9.TabIndex = 0;
@@ -187,8 +231,25 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.cmbunit);
+            this.panel3.Controls.Add(this.btnview);
+            this.panel3.Controls.Add(this.btnchunk1);
+            this.panel3.Controls.Add(this.btnchunk4);
+            this.panel3.Controls.Add(this.btnchunk3);
+            this.panel3.Controls.Add(this.btnchunk2);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.cmbChunk);
+            this.panel3.Controls.Add(this.lbltss);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.lblif);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.lblnp);
+            this.panel3.Controls.Add(this.lblpb);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.lblftp);
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lblavhrate);
             this.panel3.Controls.Add(this.lbl4);
             this.panel3.Controls.Add(this.lblmaxhrate);
@@ -210,32 +271,195 @@
             this.panel3.Size = new System.Drawing.Size(1076, 261);
             this.panel3.TabIndex = 1;
             // 
-            // label1
+            // btnview
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(833, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(204, 26);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Select Speed Unit";
+            this.btnview.Location = new System.Drawing.Point(562, 34);
+            this.btnview.Name = "btnview";
+            this.btnview.Size = new System.Drawing.Size(121, 23);
+            this.btnview.TabIndex = 25;
+            this.btnview.Text = "View Selected Rows";
+            this.btnview.UseVisualStyleBackColor = true;
+            this.btnview.Click += new System.EventHandler(this.btnview_Click);
             // 
-            // cmbunit
+            // btnchunk1
             // 
-            this.cmbunit.FormattingEnabled = true;
-            this.cmbunit.Items.AddRange(new object[] {
-            "kmph",
-            "mph"});
-            this.cmbunit.Location = new System.Drawing.Point(838, 84);
-            this.cmbunit.Name = "cmbunit";
-            this.cmbunit.Size = new System.Drawing.Size(199, 24);
-            this.cmbunit.TabIndex = 11;
-            this.cmbunit.SelectedIndexChanged += new System.EventHandler(this.Cmbunit_SelectedIndexChanged);
+            this.btnchunk1.Location = new System.Drawing.Point(662, 136);
+            this.btnchunk1.Name = "btnchunk1";
+            this.btnchunk1.Size = new System.Drawing.Size(75, 23);
+            this.btnchunk1.TabIndex = 25;
+            this.btnchunk1.Text = "Chunk 1";
+            this.btnchunk1.UseVisualStyleBackColor = true;
+            this.btnchunk1.Click += new System.EventHandler(this.btnchunk1_Click);
+            // 
+            // btnchunk4
+            // 
+            this.btnchunk4.Location = new System.Drawing.Point(662, 220);
+            this.btnchunk4.Name = "btnchunk4";
+            this.btnchunk4.Size = new System.Drawing.Size(75, 23);
+            this.btnchunk4.TabIndex = 25;
+            this.btnchunk4.Text = "Chunk 4";
+            this.btnchunk4.UseVisualStyleBackColor = true;
+            this.btnchunk4.Click += new System.EventHandler(this.btnchunk4_Click);
+            // 
+            // btnchunk3
+            // 
+            this.btnchunk3.Location = new System.Drawing.Point(662, 196);
+            this.btnchunk3.Name = "btnchunk3";
+            this.btnchunk3.Size = new System.Drawing.Size(75, 23);
+            this.btnchunk3.TabIndex = 25;
+            this.btnchunk3.Text = "Chunk 3";
+            this.btnchunk3.UseVisualStyleBackColor = true;
+            this.btnchunk3.Click += new System.EventHandler(this.btnchunk3_Click);
+            // 
+            // btnchunk2
+            // 
+            this.btnchunk2.Location = new System.Drawing.Point(662, 167);
+            this.btnchunk2.Name = "btnchunk2";
+            this.btnchunk2.Size = new System.Drawing.Size(75, 23);
+            this.btnchunk2.TabIndex = 25;
+            this.btnchunk2.Text = "Chunk 2";
+            this.btnchunk2.UseVisualStyleBackColor = true;
+            this.btnchunk2.Click += new System.EventHandler(this.btnchunk2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(562, 176);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Prepare";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cmbChunk
+            // 
+            this.cmbChunk.FormattingEnabled = true;
+            this.cmbChunk.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cmbChunk.Location = new System.Drawing.Point(535, 136);
+            this.cmbChunk.Name = "cmbChunk";
+            this.cmbChunk.Size = new System.Drawing.Size(121, 24);
+            this.cmbChunk.TabIndex = 24;
+            // 
+            // lbltss
+            // 
+            this.lbltss.AutoSize = true;
+            this.lbltss.Location = new System.Drawing.Point(981, 167);
+            this.lbltss.Name = "lbltss";
+            this.lbltss.Size = new System.Drawing.Size(31, 17);
+            this.lbltss.TabIndex = 22;
+            this.lbltss.Text = "N/A";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(775, 167);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(149, 17);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Training Stress Score:";
+            // 
+            // lblif
+            // 
+            this.lblif.AutoSize = true;
+            this.lblif.Location = new System.Drawing.Point(983, 197);
+            this.lblif.Name = "lblif";
+            this.lblif.Size = new System.Drawing.Size(31, 17);
+            this.lblif.TabIndex = 20;
+            this.lblif.Text = "N/A";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(777, 197);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(108, 17);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Intensity Factor:";
+            // 
+            // lblnp
+            // 
+            this.lblnp.AutoSize = true;
+            this.lblnp.Location = new System.Drawing.Point(983, 135);
+            this.lblnp.Name = "lblnp";
+            this.lblnp.Size = new System.Drawing.Size(31, 17);
+            this.lblnp.TabIndex = 16;
+            this.lblnp.Text = "N/A";
+            // 
+            // lblpb
+            // 
+            this.lblpb.AutoSize = true;
+            this.lblpb.Location = new System.Drawing.Point(980, 105);
+            this.lblpb.Name = "lblpb";
+            this.lblpb.Size = new System.Drawing.Size(31, 17);
+            this.lblpb.TabIndex = 14;
+            this.lblpb.Text = "N/A";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(777, 135);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(126, 17);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Normalized Power:";
+            // 
+            // lblftp
+            // 
+            this.lblftp.AutoSize = true;
+            this.lblftp.Location = new System.Drawing.Point(980, 72);
+            this.lblftp.Name = "lblftp";
+            this.lblftp.Size = new System.Drawing.Size(31, 17);
+            this.lblftp.TabIndex = 12;
+            this.lblftp.Text = "N/A";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(774, 105);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(106, 17);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Power Balance:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(774, 72);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(145, 17);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Functional Threshold:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(759, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(289, 41);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Advanced Metrics";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(160, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(164, 41);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Summary";
             // 
             // lblavhrate
             // 
             this.lblavhrate.AutoSize = true;
-            this.lblavhrate.Location = new System.Drawing.Point(239, 138);
+            this.lblavhrate.Location = new System.Drawing.Point(213, 167);
             this.lblavhrate.Name = "lblavhrate";
             this.lblavhrate.Size = new System.Drawing.Size(31, 17);
             this.lblavhrate.TabIndex = 10;
@@ -244,7 +468,7 @@
             // lbl4
             // 
             this.lbl4.AutoSize = true;
-            this.lbl4.Location = new System.Drawing.Point(33, 138);
+            this.lbl4.Location = new System.Drawing.Point(7, 167);
             this.lbl4.Name = "lbl4";
             this.lbl4.Size = new System.Drawing.Size(174, 17);
             this.lbl4.TabIndex = 10;
@@ -253,7 +477,7 @@
             // lblmaxhrate
             // 
             this.lblmaxhrate.AutoSize = true;
-            this.lblmaxhrate.Location = new System.Drawing.Point(241, 168);
+            this.lblmaxhrate.Location = new System.Drawing.Point(215, 197);
             this.lblmaxhrate.Name = "lblmaxhrate";
             this.lblmaxhrate.Size = new System.Drawing.Size(31, 17);
             this.lblmaxhrate.TabIndex = 9;
@@ -262,7 +486,7 @@
             // lbl5
             // 
             this.lbl5.AutoSize = true;
-            this.lbl5.Location = new System.Drawing.Point(35, 168);
+            this.lbl5.Location = new System.Drawing.Point(9, 197);
             this.lbl5.Name = "lbl5";
             this.lbl5.Size = new System.Drawing.Size(146, 17);
             this.lbl5.TabIndex = 9;
@@ -271,7 +495,7 @@
             // lblavpwr
             // 
             this.lblavpwr.AutoSize = true;
-            this.lblavpwr.Location = new System.Drawing.Point(241, 197);
+            this.lblavpwr.Location = new System.Drawing.Point(215, 226);
             this.lblavpwr.Name = "lblavpwr";
             this.lblavpwr.Size = new System.Drawing.Size(31, 17);
             this.lblavpwr.TabIndex = 8;
@@ -280,7 +504,7 @@
             // lbl6
             // 
             this.lbl6.AutoSize = true;
-            this.lbl6.Location = new System.Drawing.Point(35, 197);
+            this.lbl6.Location = new System.Drawing.Point(9, 226);
             this.lbl6.Name = "lbl6";
             this.lbl6.Size = new System.Drawing.Size(116, 17);
             this.lbl6.TabIndex = 8;
@@ -289,7 +513,7 @@
             // lblmaxpwr
             // 
             this.lblmaxpwr.AutoSize = true;
-            this.lblmaxpwr.Location = new System.Drawing.Point(623, 43);
+            this.lblmaxpwr.Location = new System.Drawing.Point(485, 72);
             this.lblmaxpwr.Name = "lblmaxpwr";
             this.lblmaxpwr.Size = new System.Drawing.Size(31, 17);
             this.lblmaxpwr.TabIndex = 7;
@@ -298,7 +522,7 @@
             // lbl7
             // 
             this.lbl7.AutoSize = true;
-            this.lbl7.Location = new System.Drawing.Point(462, 43);
+            this.lbl7.Location = new System.Drawing.Point(324, 72);
             this.lbl7.Name = "lbl7";
             this.lbl7.Size = new System.Drawing.Size(88, 17);
             this.lbl7.TabIndex = 7;
@@ -307,7 +531,7 @@
             // lblmaxspeed
             // 
             this.lblmaxspeed.AutoSize = true;
-            this.lblmaxspeed.Location = new System.Drawing.Point(241, 106);
+            this.lblmaxspeed.Location = new System.Drawing.Point(215, 135);
             this.lblmaxspeed.Name = "lblmaxspeed";
             this.lblmaxspeed.Size = new System.Drawing.Size(31, 17);
             this.lblmaxspeed.TabIndex = 3;
@@ -316,7 +540,7 @@
             // lblavalt
             // 
             this.lblavalt.AutoSize = true;
-            this.lblavalt.Location = new System.Drawing.Point(623, 76);
+            this.lblavalt.Location = new System.Drawing.Point(485, 105);
             this.lblavalt.Name = "lblavalt";
             this.lblavalt.Size = new System.Drawing.Size(31, 17);
             this.lblavalt.TabIndex = 4;
@@ -325,7 +549,7 @@
             // lbl8
             // 
             this.lbl8.AutoSize = true;
-            this.lbl8.Location = new System.Drawing.Point(462, 76);
+            this.lbl8.Location = new System.Drawing.Point(324, 105);
             this.lbl8.Name = "lbl8";
             this.lbl8.Size = new System.Drawing.Size(124, 17);
             this.lbl8.TabIndex = 4;
@@ -334,7 +558,7 @@
             // lblavspeed
             // 
             this.lblavspeed.AutoSize = true;
-            this.lblavspeed.Location = new System.Drawing.Point(238, 76);
+            this.lblavspeed.Location = new System.Drawing.Point(212, 105);
             this.lblavspeed.Name = "lblavspeed";
             this.lblavspeed.Size = new System.Drawing.Size(31, 17);
             this.lblavspeed.TabIndex = 2;
@@ -343,7 +567,7 @@
             // lbl3
             // 
             this.lbl3.AutoSize = true;
-            this.lbl3.Location = new System.Drawing.Point(35, 106);
+            this.lbl3.Location = new System.Drawing.Point(9, 135);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(123, 17);
             this.lbl3.TabIndex = 3;
@@ -352,7 +576,7 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(238, 43);
+            this.lbltotal.Location = new System.Drawing.Point(212, 72);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(31, 17);
             this.lbltotal.TabIndex = 1;
@@ -361,7 +585,7 @@
             // lbl2
             // 
             this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(32, 76);
+            this.lbl2.Location = new System.Drawing.Point(6, 105);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(118, 17);
             this.lbl2.TabIndex = 2;
@@ -370,7 +594,7 @@
             // lbl1
             // 
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(32, 43);
+            this.lbl1.Location = new System.Drawing.Point(6, 72);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(111, 17);
             this.lbl1.TabIndex = 1;
@@ -390,7 +614,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewDataToolStripMenuItem,
-            this.graph});
+            this.graph,
+            this.compareFileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1124, 28);
@@ -434,6 +659,13 @@
             this.mainGraphToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.mainGraphToolStripMenuItem.Text = "Main Graph";
             this.mainGraphToolStripMenuItem.Click += new System.EventHandler(this.MainGraphToolStripMenuItem_Click);
+            // 
+            // compareFileToolStripMenuItem
+            // 
+            this.compareFileToolStripMenuItem.Name = "compareFileToolStripMenuItem";
+            this.compareFileToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
+            this.compareFileToolStripMenuItem.Text = "Compare File";
+            this.compareFileToolStripMenuItem.Click += new System.EventHandler(this.compareFileToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -505,6 +737,26 @@
         private System.Windows.Forms.Label lbldevice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbunit;
+        private System.Windows.Forms.ToolStripMenuItem compareFileToolStripMenuItem;
+        private System.Windows.Forms.Label lbltss;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblif;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblnp;
+        private System.Windows.Forms.Label lblpb;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblftp;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbChunk;
+        private System.Windows.Forms.Button btnview;
+        private System.Windows.Forms.Button btnchunk1;
+        private System.Windows.Forms.Button btnchunk4;
+        private System.Windows.Forms.Button btnchunk3;
+        private System.Windows.Forms.Button btnchunk2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
