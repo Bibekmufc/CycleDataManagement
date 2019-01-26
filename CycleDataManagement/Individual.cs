@@ -38,6 +38,11 @@ namespace CycleDataManagement
 
             this.rdHR.Checked = true;
         }
+        /// <summary>
+        /// function to build points to plot in graph
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private PointPairList buildPointPairList(int[] value)
         {
             PointPairList pr = new PointPairList();
@@ -61,6 +66,9 @@ namespace CycleDataManagement
         {
             MapGraph();
         }
+        /// <summary>
+        /// function to plot points in graph
+        /// </summary>
         private void MapGraph()
         {
             GraphPane myPane = zheart.GraphPane;

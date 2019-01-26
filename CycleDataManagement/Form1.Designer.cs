@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnview = new System.Windows.Forms.Button();
             this.cmbunit = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbldevice = new System.Windows.Forms.Label();
@@ -42,7 +43,8 @@
             this.lblinterval = new System.Windows.Forms.Label();
             this.lbl9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnview = new System.Windows.Forms.Button();
+            this.txtinterval = new System.Windows.Forms.TextBox();
+            this.btninterval = new System.Windows.Forms.Button();
             this.btnchunk1 = new System.Windows.Forms.Button();
             this.btnchunk4 = new System.Windows.Forms.Button();
             this.btnchunk3 = new System.Windows.Forms.Button();
@@ -60,6 +62,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblavhrate = new System.Windows.Forms.Label();
             this.lbl4 = new System.Windows.Forms.Label();
@@ -128,6 +131,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.btnview);
             this.panel2.Controls.Add(this.cmbunit);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lbldevice);
@@ -142,13 +146,23 @@
             this.panel2.Size = new System.Drawing.Size(266, 342);
             this.panel2.TabIndex = 0;
             // 
+            // btnview
+            // 
+            this.btnview.Location = new System.Drawing.Point(28, 306);
+            this.btnview.Name = "btnview";
+            this.btnview.Size = new System.Drawing.Size(161, 23);
+            this.btnview.TabIndex = 25;
+            this.btnview.Text = "View Selected Rows";
+            this.btnview.UseVisualStyleBackColor = true;
+            this.btnview.Click += new System.EventHandler(this.btnview_Click);
+            // 
             // cmbunit
             // 
             this.cmbunit.FormattingEnabled = true;
             this.cmbunit.Items.AddRange(new object[] {
             "kmph",
             "mph"});
-            this.cmbunit.Location = new System.Drawing.Point(28, 277);
+            this.cmbunit.Location = new System.Drawing.Point(28, 262);
             this.cmbunit.Name = "cmbunit";
             this.cmbunit.Size = new System.Drawing.Size(198, 24);
             this.cmbunit.TabIndex = 11;
@@ -158,7 +172,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 239);
+            this.label1.Location = new System.Drawing.Point(23, 224);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 26);
             this.label1.TabIndex = 12;
@@ -204,7 +218,7 @@
             // lbldate
             // 
             this.lbldate.AutoSize = true;
-            this.lbldate.Location = new System.Drawing.Point(81, 92);
+            this.lbldate.Location = new System.Drawing.Point(114, 92);
             this.lbldate.Name = "lbldate";
             this.lbldate.Size = new System.Drawing.Size(31, 17);
             this.lbldate.TabIndex = 0;
@@ -231,7 +245,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel3.Controls.Add(this.btnview);
+            this.panel3.Controls.Add(this.txtinterval);
+            this.panel3.Controls.Add(this.btninterval);
             this.panel3.Controls.Add(this.btnchunk1);
             this.panel3.Controls.Add(this.btnchunk4);
             this.panel3.Controls.Add(this.btnchunk3);
@@ -249,6 +264,7 @@
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lblavhrate);
             this.panel3.Controls.Add(this.lbl4);
@@ -271,19 +287,27 @@
             this.panel3.Size = new System.Drawing.Size(1076, 261);
             this.panel3.TabIndex = 1;
             // 
-            // btnview
+            // txtinterval
             // 
-            this.btnview.Location = new System.Drawing.Point(562, 34);
-            this.btnview.Name = "btnview";
-            this.btnview.Size = new System.Drawing.Size(121, 23);
-            this.btnview.TabIndex = 25;
-            this.btnview.Text = "View Selected Rows";
-            this.btnview.UseVisualStyleBackColor = true;
-            this.btnview.Click += new System.EventHandler(this.btnview_Click);
+            this.txtinterval.Location = new System.Drawing.Point(534, 224);
+            this.txtinterval.Multiline = true;
+            this.txtinterval.Name = "txtinterval";
+            this.txtinterval.Size = new System.Drawing.Size(351, 22);
+            this.txtinterval.TabIndex = 27;
+            // 
+            // btninterval
+            // 
+            this.btninterval.Location = new System.Drawing.Point(318, 223);
+            this.btninterval.Name = "btninterval";
+            this.btninterval.Size = new System.Drawing.Size(169, 23);
+            this.btninterval.TabIndex = 26;
+            this.btninterval.Text = "Interval Detection";
+            this.btninterval.UseVisualStyleBackColor = true;
+            this.btninterval.Click += new System.EventHandler(this.btninterval_Click);
             // 
             // btnchunk1
             // 
-            this.btnchunk1.Location = new System.Drawing.Point(662, 136);
+            this.btnchunk1.Location = new System.Drawing.Point(661, 72);
             this.btnchunk1.Name = "btnchunk1";
             this.btnchunk1.Size = new System.Drawing.Size(75, 23);
             this.btnchunk1.TabIndex = 25;
@@ -293,7 +317,7 @@
             // 
             // btnchunk4
             // 
-            this.btnchunk4.Location = new System.Drawing.Point(662, 220);
+            this.btnchunk4.Location = new System.Drawing.Point(661, 156);
             this.btnchunk4.Name = "btnchunk4";
             this.btnchunk4.Size = new System.Drawing.Size(75, 23);
             this.btnchunk4.TabIndex = 25;
@@ -303,7 +327,7 @@
             // 
             // btnchunk3
             // 
-            this.btnchunk3.Location = new System.Drawing.Point(662, 196);
+            this.btnchunk3.Location = new System.Drawing.Point(661, 132);
             this.btnchunk3.Name = "btnchunk3";
             this.btnchunk3.Size = new System.Drawing.Size(75, 23);
             this.btnchunk3.TabIndex = 25;
@@ -313,7 +337,7 @@
             // 
             // btnchunk2
             // 
-            this.btnchunk2.Location = new System.Drawing.Point(662, 167);
+            this.btnchunk2.Location = new System.Drawing.Point(661, 103);
             this.btnchunk2.Name = "btnchunk2";
             this.btnchunk2.Size = new System.Drawing.Size(75, 23);
             this.btnchunk2.TabIndex = 25;
@@ -323,7 +347,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(562, 176);
+            this.button1.Location = new System.Drawing.Point(561, 112);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 25;
@@ -339,7 +363,7 @@
             "2",
             "3",
             "4"});
-            this.cmbChunk.Location = new System.Drawing.Point(535, 136);
+            this.cmbChunk.Location = new System.Drawing.Point(534, 72);
             this.cmbChunk.Name = "cmbChunk";
             this.cmbChunk.Size = new System.Drawing.Size(121, 24);
             this.cmbChunk.TabIndex = 24;
@@ -445,6 +469,17 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Advanced Metrics";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(534, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(164, 41);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Chunking";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -513,7 +548,7 @@
             // lblmaxpwr
             // 
             this.lblmaxpwr.AutoSize = true;
-            this.lblmaxpwr.Location = new System.Drawing.Point(485, 72);
+            this.lblmaxpwr.Location = new System.Drawing.Point(440, 72);
             this.lblmaxpwr.Name = "lblmaxpwr";
             this.lblmaxpwr.Size = new System.Drawing.Size(31, 17);
             this.lblmaxpwr.TabIndex = 7;
@@ -522,7 +557,7 @@
             // lbl7
             // 
             this.lbl7.AutoSize = true;
-            this.lbl7.Location = new System.Drawing.Point(324, 72);
+            this.lbl7.Location = new System.Drawing.Point(315, 72);
             this.lbl7.Name = "lbl7";
             this.lbl7.Size = new System.Drawing.Size(88, 17);
             this.lbl7.TabIndex = 7;
@@ -540,7 +575,7 @@
             // lblavalt
             // 
             this.lblavalt.AutoSize = true;
-            this.lblavalt.Location = new System.Drawing.Point(485, 105);
+            this.lblavalt.Location = new System.Drawing.Point(440, 105);
             this.lblavalt.Name = "lblavalt";
             this.lblavalt.Size = new System.Drawing.Size(31, 17);
             this.lblavalt.TabIndex = 4;
@@ -549,7 +584,7 @@
             // lbl8
             // 
             this.lbl8.AutoSize = true;
-            this.lbl8.Location = new System.Drawing.Point(324, 105);
+            this.lbl8.Location = new System.Drawing.Point(315, 105);
             this.lbl8.Name = "lbl8";
             this.lbl8.Size = new System.Drawing.Size(124, 17);
             this.lbl8.TabIndex = 4;
@@ -757,6 +792,9 @@
         private System.Windows.Forms.Button btnchunk3;
         private System.Windows.Forms.Button btnchunk2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btninterval;
+        private System.Windows.Forms.TextBox txtinterval;
     }
 }
 

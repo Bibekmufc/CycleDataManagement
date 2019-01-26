@@ -71,19 +71,19 @@
             // zedGraphControl1
             // 
             this.zedGraphControl1.IsShowPointValues = false;
-            this.zedGraphControl1.Location = new System.Drawing.Point(645, 270);
+            this.zedGraphControl1.Location = new System.Drawing.Point(12, 268);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.PointValueFormat = "G";
-            this.zedGraphControl1.Size = new System.Drawing.Size(604, 445);
+            this.zedGraphControl1.Size = new System.Drawing.Size(627, 445);
             this.zedGraphControl1.TabIndex = 0;
             // 
             // zedGraphControl2
             // 
             this.zedGraphControl2.IsShowPointValues = false;
-            this.zedGraphControl2.Location = new System.Drawing.Point(12, 268);
+            this.zedGraphControl2.Location = new System.Drawing.Point(645, 268);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.PointValueFormat = "G";
-            this.zedGraphControl2.Size = new System.Drawing.Size(625, 445);
+            this.zedGraphControl2.Size = new System.Drawing.Size(610, 445);
             this.zedGraphControl2.TabIndex = 0;
             // 
             // lblavhrate
@@ -253,7 +253,7 @@
             this.groupBox1.Size = new System.Drawing.Size(627, 250);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Data Summary of first file";
             // 
             // groupBox2
             // 
@@ -278,7 +278,7 @@
             this.groupBox2.Size = new System.Drawing.Size(627, 250);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox1";
+            this.groupBox2.Text = "Data summary of second file";
             // 
             // label1
             // 

@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\CycleDataManagement.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,6 +81,12 @@
     <Compile Include="Individual.Designer.cs">
       <DependentUpon>Individual.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntervalDetection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntervalDetection.Designer.cs">
+      <DependentUpon>IntervalDetection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Compare.resx">
@@ -96,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Individual.resx">
       <DependentUpon>Individual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntervalDetection.resx">
+      <DependentUpon>IntervalDetection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

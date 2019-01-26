@@ -27,6 +27,7 @@ namespace CycleDataManagement
         public List<string> heartRate = new List<string>();
         public List<string> powerBalancePedalling = new List<string>();
         public List<string> intvTime = new List<string>();
+        public List<string[]> OriginalData = new List<string[]>();
 
 
         public List<string> chunkHeart = new List<string>();
@@ -51,6 +52,7 @@ namespace CycleDataManagement
         int rowCount = 0;
         int chk_num = 0;
         string smode = "";
+        string chunkedData = "";
 
 
         public Form1()
@@ -205,6 +207,7 @@ namespace CycleDataManagement
 
                 string newline = string.Join(" ", line.Split(findOf, StringSplitOptions.RemoveEmptyEntries));
                 List<string> val = newline.Split(' ').ToList();
+                OriginalData.Add(newline.Split());
                 if (sHeart == 1)
                 {
                     hr = int.Parse(val[0]);
@@ -349,6 +352,11 @@ namespace CycleDataManagement
             dataGrid.Columns[2].Visible = false;
         }
 
+        /// <summary>
+        /// function to select two rows and to show their data value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnview_Click(object sender, EventArgs e)
         {
             if (dataGrid.SelectedRows.Count < 1 && dataGrid.SelectedColumns.Count < 6)
@@ -390,6 +398,9 @@ namespace CycleDataManagement
                 Calc();
             }
         }
+        /// <summary>
+        /// refresh values
+        /// </summary>
         public void refresh()
         {
             counter = 0;
@@ -703,6 +714,111 @@ namespace CycleDataManagement
             lblpb.Text = null;
             lblnp.Text = NP + " watts";
         }
+
+
+        /// <summary>
+        /// Calculates and retruns the average of the chunked data.
+        /// </summary>
+        /// <param name="totalData">the chunk of data whose averages should be calculated.</param>
+        /// <returns></returns>
+        private string CalculateAverageOfChunks(List<List<string[]>> totalData)
+        {
+            string result = "";
+            int chunkCounter = 1;
+            int totalChunks = totalData.Count;
+
+            foreach (List<string[]> strList in totalData)
+            {
+                result += ("Average For Chunk #" + chunkCounter + "\n");
+                // heart rate, speed, cadence, altitude, power
+                double heartRate = 0;
+                double speed = 0;
+                double cadence = 0;
+                double altitude = 0;
+                double power = 0;
+
+                // calculating average now
+                heartRate = Calculate.GetAverage(strList, 0);
+                speed = Calculate.GetAverage(strList, 1);
+                cadence = Calculate.GetAverage(strList, 2);
+                altitude = Calculate.GetAverage(strList, 3);
+                power = Calculate.GetAverage(strList, 4);
+
+                result += "Average Heart Rate : " + heartRate + "\n";
+                result += "Average Speed : " + speed + "\n";
+                result += "Average Cadence : " + cadence + "\n";
+                result += "Average Altitude : " + altitude + "\n";
+                result += "Average Power : " + power + "\n\n\n";
+
+                // next chunk
+                chunkCounter++;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Break the passed data into specified number of chunks and return it as list of chunks.
+        /// </summary>
+        /// <param name="numberOfChunks">expected number of chunks for the data</param>
+        /// <param name="data">the actual data which requires chunking</param>
+        /// <returns></returns>
+        private List<List<string[]>> BreakDataIntoChunks(int numberOfChunks, List<string[]> data)
+        {
+            int sizeOfData = data.Count;
+            // this number of items will be placed in a chunk
+            int splitAtEvery = sizeOfData / numberOfChunks;
+
+            List<List<string[]>> comparisonData = new List<List<string[]>>();
+
+            int endAt = 0;
+
+            // iterate over number of times
+            for (int i = 0; i < numberOfChunks; i++)
+            {
+                List<string[]> temp = new List<string[]>();
+
+                // increase the amount of data to be retrieved from chunk
+                endAt = endAt + splitAtEvery;
+
+                for (int j = 0; j < endAt; j++)
+                {
+                    // get the values upto the specified index
+                    temp.Add(data[j]);
+                }
+
+                // add the value to the file
+                comparisonData.Add(temp);
+            }
+
+            return comparisonData;
+        }
+
+        private void btninterval_Click(object sender, EventArgs e)
+        {
+            if (dataCount() == 0)
+            {
+                txtinterval.Text = "To detect interval you must load a file first.";
+                return;
+            }
+
+            int intervals = Calculate.DetectClearInterval(speed);
+
+            List<List<string[]>> totalData = BreakDataIntoChunks(intervals, OriginalData);
+
+            string average = CalculateAverageOfChunks(totalData);
+            chunkedData = average;
+
+            IntervalDetection id = new IntervalDetection(chunkedData);
+            id.Show();
+
+
+            txtinterval.Text = "There were " + Convert.ToString(intervals) + " intervals during the period of cycling.";
+
+        }
+
+
+
     }
 }
  
