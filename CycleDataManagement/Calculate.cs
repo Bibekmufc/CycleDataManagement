@@ -18,6 +18,7 @@ namespace CycleDataManagement
         string time = "";
         double FTP = 0, NP = 0, PB = 12, IF = 0;
 
+
         public Calculate(List<string> heartRate, List<string> speed, List<string> speed_mile, List<string> cadence, List<string> altitude, List<string> power, string time)
         {
             this.heartRate = heartRate;
@@ -308,6 +309,20 @@ namespace CycleDataManagement
             double TSS = Math.Round(TSS1, 2);
 
             return TSS.ToString();
+        }
+        public double CalculatePB()
+        {
+            List<string> pwr = new List<string>();
+            string[] power1 = power.ToArray();
+            double result = 0.0;
+
+            double temp = 0.0;
+            foreach(string arStr in power1)
+            {
+                double.TryParse(arStr, out temp);
+                result += temp;
+            }
+            return result / power1.Length;
         }
 
         /// <summary>

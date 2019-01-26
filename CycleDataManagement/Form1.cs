@@ -705,13 +705,14 @@ namespace CycleDataManagement
             Calculate c = new Calculate(heartRate, speed, speed_miles, cadence, altitude, power, time);
             string FTP = c.CalculateFTP();
             string NP = c.CalculateNP();
+            double PB = c.CalculatePB();
             string IF = c.CalculateIF();
             string TSS = c.CalculateTSS();
 
             lblftp.Text = FTP + " watts";
             lbltss.Text = TSS + "";
             lblif.Text = IF + "";
-            lblpb.Text = null;
+            lblpb.Text = RoundOff(PB).ToString();
             lblnp.Text = NP + " watts";
         }
 
