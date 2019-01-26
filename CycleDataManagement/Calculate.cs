@@ -31,7 +31,11 @@ namespace CycleDataManagement
 
         }
 
-        //average calculation
+        /// <summary>
+        /// average calculation with string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Average(List<string> value)
         {
             double sum = 0;
@@ -44,7 +48,12 @@ namespace CycleDataManagement
             double result = (sum / value.Count);
             return result;
         }
-        //average calculation
+
+        /// <summary>
+        /// average calculation with double
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Average(List<double> value)
         {
             double sum = 0;
@@ -57,7 +66,12 @@ namespace CycleDataManagement
             double result = (sum / value.Count);
             return result;
         }
-        //average calculation
+        
+        /// <summary>
+        /// average calculation with int
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Average(List<int> value)
         {
             double sum = 0;
@@ -71,7 +85,11 @@ namespace CycleDataManagement
             return result;
         }
 
-        //sum calculation
+        /// <summary>
+        /// sum calculation with string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Sum(List<string> value)
         {
             double sum = 0;
@@ -84,7 +102,11 @@ namespace CycleDataManagement
             return sum;
         }
 
-        //max calculation
+        /// <summary>
+        /// max calculation with string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Max(List<string> value)
         {
             double maxVal = 0;
@@ -99,6 +121,11 @@ namespace CycleDataManagement
 
             return maxVal;
         }
+        /// <summary>
+        /// max calculation with int
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Max(List<int> value)
         {
             double maxVal = 0;
@@ -113,6 +140,11 @@ namespace CycleDataManagement
 
             return maxVal;
         }
+        /// <summary>
+        /// max calculation with double
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Max(List<double> value)
         {
             double maxVal = 0;
@@ -128,7 +160,11 @@ namespace CycleDataManagement
             return maxVal;
         }
 
-        //min calculation
+        /// <summary>
+        /// min calculation with string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static int Min(List<string> value)
         {
             int minVal = Int32.Parse(value.ElementAt(0));
@@ -143,6 +179,11 @@ namespace CycleDataManagement
 
             return minVal;
         }
+        /// <summary>
+        /// min calculation with int
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static int Min(List<int> value)
         {
             int minVal = (value.ElementAt(0));
@@ -158,7 +199,13 @@ namespace CycleDataManagement
             return minVal;
         }
 
-        //Total distance calculation
+        /// <summary>
+        /// calculation of total distance
+        /// </summary>
+        /// <param name="average"></param>
+        /// <param name="count"></param>
+        /// <param name="interval"></param>
+        /// <returns></returns>
         public static double Total(double average, int count, int interval)
         {
             var time = TimeSpan.FromSeconds(count * interval);
@@ -166,7 +213,10 @@ namespace CycleDataManagement
             return total1;
         }
 
-        //Functional Threshold Power Calculation
+        /// <summary>
+        /// calculation of functional threshold power
+        /// </summary>
+        /// <returns></returns>
         public string CalculateFTP()
         {
             double num = 0;
@@ -183,7 +233,10 @@ namespace CycleDataManagement
             return FTP.ToString();
         }
 
-        //Normal Power Calculation
+        /// <summary>
+        /// calculation of normal power
+        /// </summary>
+        /// <returns></returns>
         public string CalculateNP()
         {
             List<double> power1 = new List<double>();
@@ -230,7 +283,10 @@ namespace CycleDataManagement
 
         }
 
-        //Intensity Factor Calculation
+        /// <summary>
+        /// calculation of intensity factor
+        /// </summary>
+        /// <returns></returns>
         public string CalculateIF()
         {
             double IF1 = NP / FTP;
@@ -239,7 +295,10 @@ namespace CycleDataManagement
             return IF.ToString();
         }
 
-        //Training Stress Score Calculation
+        /// <summary>
+        /// calculation of training stress score
+        /// </summary>
+        /// <returns></returns>
         public string CalculateTSS()
         {
             string[] heart1 = heartRate.ToArray();

@@ -82,6 +82,9 @@ namespace CycleDataManagement
 
         }
 
+        /// <summary>
+        /// function to plot points in the graph
+        /// </summary>
         private void plotToGraph()
         {
             GraphPane myPane = zedGraphControl1.GraphPane;
@@ -150,7 +153,9 @@ namespace CycleDataManagement
         }
 
 
-        //summary calculation
+        /// <summary>
+        /// calculation of data to be displayed of first graph
+        /// </summary>
         private void Calc()
         {
             var maxSpeed = Calculate.Max(speed);
@@ -170,7 +175,6 @@ namespace CycleDataManagement
             var averageAltitude = Calculate.Average(altitude);
             var maximumAltitude = Calculate.Max(altitude);
 
-            //summary of data to be displayed
             lbltotal.Text = Compare.roundOff(totalDistance) + " km";
             lblavspeed.Text = Compare.roundOff(averageSpeed) + " km/h";
             lblmaxspeed.Text = Compare.roundOff(maxSpeed) + " km/h";
@@ -183,7 +187,9 @@ namespace CycleDataManagement
 
         }
 
-        //summary calculation
+        /// <summary>
+        /// calculation of data for second graph
+        /// </summary>
         private void Calc2()
         {
             var maxSpeed = Calculate.Max(speed2);
@@ -203,7 +209,6 @@ namespace CycleDataManagement
             var averageAltitude = Calculate.Average(altitude);
             var maximumAltitude = Calculate.Max(altitude);
 
-            //summary of data to be displayed
             lbltotal2.Text = Compare.roundOff(totalDistance) + " km";
             lblavspeed2.Text = Compare.roundOff(averageSpeed) + " km/h";
             lblmaxspeed2.Text = Compare.roundOff(maxSpeed) + " km/h";

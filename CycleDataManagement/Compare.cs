@@ -72,6 +72,11 @@ namespace CycleDataManagement
             InitGrid1();
         }
 
+        /// <summary>
+        /// button for selecting file one
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnfile1_Click(object sender, EventArgs e)
         {
             OpenFileDialog od = new OpenFileDialog();
@@ -82,6 +87,11 @@ namespace CycleDataManagement
             }
         }
 
+        /// <summary>
+        /// button to open window for selecting file two
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnfile2_Click(object sender, EventArgs e)
         {
             OpenFileDialog od = new OpenFileDialog();
@@ -92,6 +102,10 @@ namespace CycleDataManagement
             }
         }
 
+        /// <summary>
+        /// puts the contents of the file chosen in an array
+        /// </summary>
+        /// <param name="filePath"></param>
         public void fileprocessing(string filePath)
         {
             try
@@ -168,6 +182,10 @@ namespace CycleDataManagement
 
         }
 
+        /// <summary>
+        /// puts the contents of the file chosen in an array
+        /// </summary>
+        /// <param name="filePath"></param>
         public void fileprocessing1(string filePath)
         {
 
@@ -245,6 +263,10 @@ namespace CycleDataManagement
 
         }
 
+        /// <summary>
+        /// breaks down the data from array into specific paths
+        /// </summary>
+        /// <param name="line"></param>
         public void sortDataIntoArray(string line)
         {
             try
@@ -293,6 +315,10 @@ namespace CycleDataManagement
 
         }
 
+        /// <summary>
+        /// breaks down the data from array into specific paths
+        /// </summary>
+        /// <param name="line"></param>
         public void sortDataIntoArray1(string line)
         {
             try
@@ -337,14 +363,21 @@ namespace CycleDataManagement
                 MessageBox.Show(e.Message);
             }
         }
-        //minimizing the decimal value to 2
+        /// <summary>
+        /// minimizing the decimal value to 2
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
         public static double roundOff(double val)
         {
             double data = Math.Round(val, 2, MidpointRounding.AwayFromZero);
             return data;
         }
 
-        //calculateing smode
+        /// <summary>
+        /// calculating smode
+        /// </summary>
+        /// <param name="mode"></param>
         private void SMODE(string mode)
         {
             heartCheck = int.Parse(mode.Substring(0, 1));
@@ -354,7 +387,11 @@ namespace CycleDataManagement
             powerCheck = int.Parse(mode.Substring(4, 1));
         }
 
-        //timeinterval for each row
+        /// <summary>
+        /// building the time interval for each row
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public string timeBuilder(string time)
         {
             // fetch the en-GB culture
@@ -364,6 +401,11 @@ namespace CycleDataManagement
             return result;
         }
 
+        /// <summary>
+        /// displays window of graph when the graph button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btngraph_Click(object sender, EventArgs e)
         {
             if (filedata1.RowCount > 1 && filedata2.RowCount > 1)
@@ -378,6 +420,9 @@ namespace CycleDataManagement
             }
         }
 
+        /// <summary>
+        /// function to fill the data into a table
+        /// </summary>
         public void FillTable1()
         {
             int counter = 0;
@@ -397,7 +442,9 @@ namespace CycleDataManagement
             }
         }
 
-
+        /// <summary>
+        /// function to fill the data into a table
+        /// </summary>
         public void FillTable2()
         {
             int interval = 0;
@@ -418,7 +465,9 @@ namespace CycleDataManagement
 
         }
 
-        //specifying column header
+        /// <summary>
+        /// specifying the column headers
+        /// </summary>
         private void InitGrid()
         {
             filedata1.ColumnCount = 7;
@@ -431,7 +480,9 @@ namespace CycleDataManagement
             filedata1.Columns[6].Name = "Power Balance";
         }
 
-        //specifying column header
+        /// <summary>
+        /// specifying the column headers
+        /// </summary>
         private void InitGrid1()
         {
             filedata2.ColumnCount = 7;
@@ -444,6 +495,10 @@ namespace CycleDataManagement
             filedata2.Columns[6].Name = "Power Balance";
         }
 
+        /// <summary>
+        /// counts the number of rows in the data grid table
+        /// </summary>
+        /// <returns></returns>
         public int rowCount()
         {
             int count = 0;
@@ -451,6 +506,10 @@ namespace CycleDataManagement
             return count;
         }
 
+        /// <summary>
+        /// counts the number of rows in the data grid table
+        /// </summary>
+        /// <returns></returns>
         public int rowCount1()
         {
             int count = 0;
@@ -458,7 +517,11 @@ namespace CycleDataManagement
             return count;
         }
 
-
+        /// <summary>
+        /// selects the rows to show the values in difference field
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void filedata1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (filedata1.SelectedRows.Count == 0 || filedata1.SelectedRows.Count > 1)
@@ -521,6 +584,11 @@ namespace CycleDataManagement
             }
         }
 
+        /// <summary>
+        /// action performed when the compare button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btncompare_Click_1(object sender, EventArgs e)
         {
             fileprocessing(txtfile1.Text);
@@ -532,7 +600,12 @@ namespace CycleDataManagement
 
 
 
-        //calculate difference
+        /// <summary>
+        /// calculates the difference of data
+        /// </summary>
+        /// <param name="num1"></param>
+        /// <param name="num2"></param>
+        /// <returns></returns>
         public string CalculateDifference(double num1, double num2)
         {
             double rst = 0;

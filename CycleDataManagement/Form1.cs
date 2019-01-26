@@ -60,7 +60,9 @@ namespace CycleDataManagement
             cmbunit.SelectedIndex = 0; //default speed unit
         }
 
-        //specifying column header
+        /// <summary>
+        /// specifying column headers
+        /// </summary>
         private void InitializeGrid()
         {
             dataGrid.ColumnCount = 7;
@@ -83,7 +85,9 @@ namespace CycleDataManagement
             calculateAdvancedMetrics();
         }
 
-        //read and display the data from  file
+        /// <summary>
+        ///read and display the data from  file
+        /// </summary>
         public void ReadSource()
         {
             string line = "";
@@ -159,7 +163,9 @@ namespace CycleDataManagement
 
             }
         }
-        //array for devices
+        /// <summary>
+        /// array for devices
+        /// </summary>
         public string deviceName(string val)
         {
             string[] device = {
@@ -189,7 +195,9 @@ namespace CycleDataManagement
             string dev = device[Convert.ToInt16(val)];
             return dev;
         }
-        //split data and adding into list array
+        /// <summary>
+        ///split data and adding into list array
+        /// </summary>
         public void sortDataToArray(string line)
         {
             try
@@ -243,17 +251,20 @@ namespace CycleDataManagement
             sPower = int.Parse(mode.Substring(4, 1));
         }
 
-
+        /// <summary>
+        /// fetch the en-GB culture for time to be displayed in British format
+        /// </summary>
         public string CalcTime(string time)
         {
-            // fetch the en-GB culture for time to be displayed in British format
             CultureInfo ci = new CultureInfo("en-GB");
             dt = DateTime.ParseExact(time, "HH:mm:ss.f", ci.DateTimeFormat);
             string result = dt.AddSeconds(interval).ToString("HH:mm:ss.f");
             return result;
         }
 
-        //displayed list data to grid view table
+        /// <summary>
+        ///displayed list data to grid view table
+        /// </summary>
         public void ViewData()
         {
             if (cmbunit.SelectedIndex == 0)
@@ -275,7 +286,9 @@ namespace CycleDataManagement
             }
 }
 
-        //adding data to dictionary 
+        /// <summary>
+        ///adding data to dictionary
+        /// </summary>
         private void DataDictionary()
         {
             Data.Add("heartRate", heartRate);
@@ -287,7 +300,9 @@ namespace CycleDataManagement
         }
 
 
-        //summary calculation
+        /// <summary>
+        /// calculation
+        /// </summary>
         private void Calc()
         {
             var maxSpeed = Calculate.Max(Data["speed"]);
@@ -319,7 +334,9 @@ namespace CycleDataManagement
             lblavalt.Text = RoundOff(averageAltitude) + " m/ft";
         }
 
-        //combobox to select speed unit
+        /// <summary>
+        ///combobox to select speed unit
+        /// </summary>
         private void Cmbunit_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbunit.SelectedIndex == 0)
@@ -405,7 +422,11 @@ namespace CycleDataManagement
             double data = Math.Round(val, 2, MidpointRounding.AwayFromZero);
             return data;
         }
-
+        /// <summary>
+        /// action when prepare chunk button is pressed for chunking
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (dataCount() >= 4 && !string.IsNullOrEmpty(cmbChunk.Text))
@@ -450,7 +471,9 @@ namespace CycleDataManagement
                 MessageBox.Show("Four Rows would have been Selected At least.");
             }
         }
-
+        /// <summary>
+        /// array of data for chunking
+        /// </summary>
         public void Array()
         {
             foreach (string var in heartRate)
@@ -482,7 +505,11 @@ namespace CycleDataManagement
                 chunkPowerBalancePedalling.Add(var);
             }
         }
-
+        /// <summary>
+        /// buttons for various levels of chunking
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnchunk1_Click(object sender, EventArgs e)
         {
             if (chk_num > 1)
@@ -630,28 +657,38 @@ namespace CycleDataManagement
                 MessageBox.Show("Please select chunk level");
             }
         }
-
+        /// <summary>
+        /// action for redirecting to compare graph form when the menu tool strip is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void compareFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Compare c = new Compare();
             c.Show();
         }
 
-        //submenustrip for individual graph
+        /// <summary>
+        /// submenustrip for individual graph
+        /// </summary>
         private void IndividualGraphToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Individual i = new Individual(heartRate, speed, cadence, altitude, power);
             i.Show();
         }
 
-        //menu for main graph
+        /// <summary>
+        /// menu for main graph
+        /// </summary>
         private void MainGraphToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Graph g = new Graph(heartRate, speed, cadence, altitude, power);
             g.Show();
         }
 
-        //calculateAdvanceMetrics
+        /// <summary>
+        /// function for calculation of advanced metrics
+        /// </summary>
         public void calculateAdvancedMetrics()
         {
             Calculate c = new Calculate(heartRate, speed, speed_miles, cadence, altitude, power, time);

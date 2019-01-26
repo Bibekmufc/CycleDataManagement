@@ -56,11 +56,12 @@ namespace CycleDataManagement
             }
             return pr;
         }
+        /// <summary>
+        /// plots points to graph
+        /// </summary>
         private void MapGraph()
         {
             GraphPane myPane = zGraph.GraphPane;
-
-            // Setting the titles
             myPane.Title = "Graph Analysis";
             myPane.XAxis.Title = "Time in seconds";
             myPane.YAxis.Title = "Value";
@@ -100,6 +101,9 @@ namespace CycleDataManagement
             zGraph.AxisChange();
         }
 
+        /// <summary>
+        /// set size of graph
+        /// </summary>
         private void SetSize()
         {
             zGraph.Location = new Point(0, 0);
