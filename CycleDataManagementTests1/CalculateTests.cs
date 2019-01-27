@@ -126,10 +126,10 @@ namespace CycleDataManagement.Tests
         public void TotalTest()
         {
             //Assemble
-            double average = 99.2;
+            double average = 100;
             int count = 3000;
             int interval = 1;
-            double expectedResult = 82.67;
+            double expectedResult = 83.33;
 
             //Act
             double actualResult = Calculate.Total(average, count, interval);
