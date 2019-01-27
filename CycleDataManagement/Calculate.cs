@@ -20,6 +20,7 @@ namespace CycleDataManagement
         public static List<string> powerbalance = new List<string>();
         string time = "";
         public static double FTP = 0, NP = 0, PB = 12, IF = 0;
+        public static List<int> intervalIndexes;
 
         /// <summary>
         /// constructor of this class
@@ -379,7 +380,7 @@ namespace CycleDataManagement
             return result.ToString();
         }
 
-        public static List<int> intervalIndexes;
+
 
         /// <summary>
         /// The method which calculates the power balance for the given data dump.
@@ -414,6 +415,18 @@ namespace CycleDataManagement
 
             Calculate.intervalIndexes = indexes;
             return result;
+        }
+
+
+        /// <summary>
+        /// rounds off the decimal to second place
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static double RoundOff(double val)
+        {
+            double data = Math.Round(val, 2, MidpointRounding.AwayFromZero);
+            return data;
         }
     }
 }
