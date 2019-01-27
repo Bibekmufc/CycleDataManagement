@@ -11,6 +11,9 @@ using ZedGraph;
 
 namespace CycleDataManagement
 {
+    /// <summary>
+    /// this class is used to compare the graphs of two chosen files
+    /// </summary>
     public partial class CompareGraph : Form
     {
         List<int> heart = null;
@@ -29,6 +32,21 @@ namespace CycleDataManagement
 
         Compare cm = new Compare();
 
+        /// <summary>
+        /// constructor of this class
+        /// </summary>
+        /// <param name="heart"></param>
+        /// <param name="speed"></param>
+        /// <param name="cadence"></param>
+        /// <param name="altitude"></param>
+        /// <param name="power"></param>
+        /// <param name="heart2"></param>
+        /// <param name="speed2"></param>
+        /// <param name="cadence2"></param>
+        /// <param name="altitude2"></param>
+        /// <param name="power2"></param>
+        /// <param name="parameter"></param>
+        /// <param name="parameter1"></param>
         public CompareGraph(List<int> heart,
             List<double> speed,
             List<int> cadence,
@@ -58,7 +76,11 @@ namespace CycleDataManagement
             this.parameter = parameter;
             this.parameter1 = parameter1;
         }
-
+        /// <summary>
+        /// function to assign pointpairlist key and value
+        /// </summary>
+        /// <param name="data">accepts value of array of integer type</param>
+        /// <returns>returns the point</returns>
         private PointPairList buildPointPairList(int[] data)
         {
             PointPairList pt = new PointPairList();
@@ -70,6 +92,11 @@ namespace CycleDataManagement
             return pt;
 
         }
+        /// <summary>
+        /// function to assign pointpairlist key and value
+        /// </summary>
+        /// <param name="data">accepts value of array of double type</param>
+        /// <returns>returns the point</returns>
         private PointPairList buildPointPairList(double[] data)
         {
             PointPairList pt = new PointPairList();
@@ -144,7 +171,11 @@ namespace CycleDataManagement
             zedGraphControl2.AxisChange();
         }
  
-
+        /// <summary>
+        /// initialized when the form in loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CompareGraph_Load(object sender, EventArgs e)
         {
             plotToGraph();

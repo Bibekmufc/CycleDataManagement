@@ -6,27 +6,39 @@ using System.Threading.Tasks;
 
 namespace CycleDataManagement
 {
-    class Calculate
+    /// <summary>
+    /// this class does the calculation and mathematics part like sum, average, etc.
+    /// </summary>
+    public class Calculate
     {
-        List<string> heartRate = new List<string>();
-        List<string> speed = new List<string>();
-        List<string> speed_mile = new List<string>();
-        List<string> cadence = new List<string>();
-        List<string> altitude = new List<string>();
-        List<string> power = new List<string>();
-        List<string> powerbalance = new List<string>();
+        public static List<string> heartRate = new List<string>();
+        public static List<string> speed = new List<string>();
+        public static List<string> speed_mile = new List<string>();
+        public static List<string> cadence = new List<string>();
+        public static List<string> altitude = new List<string>();
+        public static List<string> power = new List<string>();
+        public static List<string> powerbalance = new List<string>();
         string time = "";
-        double FTP = 0, NP = 0, PB = 12, IF = 0;
+        public static double FTP = 0, NP = 0, PB = 12, IF = 0;
 
-
+        /// <summary>
+        /// constructor of this class
+        /// </summary>
+        /// <param name="heartRate"></param>
+        /// <param name="speed"></param>
+        /// <param name="speed_mile"></param>
+        /// <param name="cadence"></param>
+        /// <param name="altitude"></param>
+        /// <param name="power"></param>
+        /// <param name="time"></param>
         public Calculate(List<string> heartRate, List<string> speed, List<string> speed_mile, List<string> cadence, List<string> altitude, List<string> power, string time)
         {
-            this.heartRate = heartRate;
-            this.speed = speed;
-            this.speed_mile = speed_mile;
-            this.cadence = cadence;
-            this.altitude = altitude;
-            this.power = power;
+            Calculate.heartRate = heartRate;
+            Calculate.speed = speed;
+            Calculate.speed_mile = speed_mile;
+            Calculate.cadence = cadence;
+            Calculate.altitude = altitude;
+            Calculate.power = power;
             this.time = time;
 
 
@@ -300,7 +312,7 @@ namespace CycleDataManagement
         /// calculation of training stress score
         /// </summary>
         /// <returns></returns>
-        public string CalculateTSS()
+        public string CalculateTSS(List<string> heartRate)
         {
             string[] heart1 = heartRate.ToArray();
             int sec = heart1.Length;
@@ -310,6 +322,10 @@ namespace CycleDataManagement
 
             return TSS.ToString();
         }
+        /// <summary>
+        /// generates the power balance value
+        /// </summary>
+        /// <returns>the average power balance value</returns>
         public double CalculatePB()
         {
             List<string> pwr = new List<string>();

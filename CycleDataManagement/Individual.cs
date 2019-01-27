@@ -11,6 +11,9 @@ using ZedGraph;
 
 namespace CycleDataManagement
 {
+    /// <summary>
+    /// this class is used to display individual graph for chosen data category
+    /// </summary>
     public partial class Individual : Form
     {
         List<string> _heartRate = null;
@@ -19,6 +22,14 @@ namespace CycleDataManagement
         List<string> _altitude = null;
         List<string> _power = null;
 
+        /// <summary>
+        /// constructor of this class
+        /// </summary>
+        /// <param name="heartRate"></param>
+        /// <param name="speed"></param>
+        /// <param name="cadence"></param>
+        /// <param name="altitude"></param>
+        /// <param name="power"></param>
         public Individual(List<string> heartRate, List<string> speed, List<string> cadence, List<string> altitude, List<string> power)
         {
             _heartRate = heartRate;
@@ -41,7 +52,7 @@ namespace CycleDataManagement
         /// <summary>
         /// function to build points to plot in graph
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">accepts array value of integer type</param>
         /// <returns></returns>
         private PointPairList buildPointPairList(int[] value)
         {
@@ -52,6 +63,11 @@ namespace CycleDataManagement
             }
             return pr;
         }
+        /// <summary>
+        /// function to build points to plot in graph
+        /// </summary>
+        /// <param name="value">accepts array value of double type</param>
+        /// <returns></returns>
         private PointPairList buildPointPairList(double[] value)
         {
             PointPairList pr = new PointPairList();
@@ -147,6 +163,9 @@ namespace CycleDataManagement
             SetSize();
         }
 
+        /// <summary>
+        /// helps to set the size of the graph
+        /// </summary>
         private void SetSize()
         {
             zheart.Location = new Point(0, 0);
@@ -170,6 +189,11 @@ namespace CycleDataManagement
             zaltitude.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
         }
 
+        /// <summary>
+        /// to display on the speed graph
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rdSpeed_CheckedChanged(object sender, EventArgs e)
         {
             zheart.Visible = false;
@@ -178,7 +202,11 @@ namespace CycleDataManagement
             zaltitude.Visible = false;
             zcadence.Visible = false;
         }
-
+        /// <summary>
+        /// to dispaly only cadence graph
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rdCadence_CheckedChanged(object sender, EventArgs e)
         {
             zheart.Visible = false;
@@ -187,7 +215,11 @@ namespace CycleDataManagement
             zaltitude.Visible = false;
             zcadence.Visible = true;
         }
-
+        /// <summary>
+        /// to display only power graph
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rdPower_CheckedChanged(object sender, EventArgs e)
         {
             zheart.Visible = false;
@@ -196,7 +228,11 @@ namespace CycleDataManagement
             zaltitude.Visible = false;
             zcadence.Visible = false;
         }
-
+        /// <summary>
+        /// to display only atitude graph
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rdAltitude_CheckedChanged(object sender, EventArgs e)
         {
             zheart.Visible = false;
@@ -205,7 +241,11 @@ namespace CycleDataManagement
             zaltitude.Visible = true;
             zcadence.Visible = false;
         }
-
+        /// <summary>
+        /// to display only heart graph
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rdHR_CheckedChanged(object sender, EventArgs e)
         {
             zheart.Visible = true;

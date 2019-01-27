@@ -11,6 +11,9 @@ using ZedGraph;
 
 namespace CycleDataManagement
 {
+    /// <summary>
+    /// this class helps in displaying all the data in a single graph
+    /// </summary>
     public partial class Graph : Form
     {
         List<string> _heartRate = null;
@@ -19,6 +22,14 @@ namespace CycleDataManagement
         List<string> _altitude = null;
         List<string> _power = null;
 
+        /// <summary>
+        /// constructors of this class
+        /// </summary>
+        /// <param name="heartRate"></param>
+        /// <param name="speed"></param>
+        /// <param name="cadence"></param>
+        /// <param name="altitude"></param>
+        /// <param name="power"></param>
         public Graph(List<string> heartRate, List<string> speed, List<string> cadence, List<string> altitude, List<string> power)
         {
             _heartRate = heartRate;
@@ -28,16 +39,31 @@ namespace CycleDataManagement
            _power = power;
             InitializeComponent();
         }
+        /// <summary>
+        /// operates when the form is resized
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Graph_Resize(object sender, EventArgs e)
         {
             SetSize();
         }
 
+        /// <summary>
+        /// executes when the form is loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Graph_Load(object sender, EventArgs e)
         {
             MapGraph();
             SetSize();
         }
+        /// <summary>
+        /// function to assign pointpairlist key and value
+        /// </summary>
+        /// <param name="value">accepts value of array of int type</param>
+        /// <returns>returns the point</returns>
         private PointPairList BuildPointPairList(int[] value)
         {
             PointPairList pr = new PointPairList();
@@ -47,6 +73,11 @@ namespace CycleDataManagement
             }
             return pr;
         }
+        /// <summary>
+        /// function to assign pointpairlist key and value
+        /// </summary>
+        /// <param name="value">accepts value of array of double type</param>
+        /// <returns>returns the point</returns>
         private PointPairList BuildPointPairList(double[] value)
         {
             PointPairList pr = new PointPairList();

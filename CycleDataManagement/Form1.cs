@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace CycleDataManagement
 {
+    /// <summary>
+    /// this class displays the main form
+    /// </summary>
     public partial class Form1 : Form
     {
         public Dictionary<string, List<string>> Data = new Dictionary<string, List<string>>();
@@ -54,7 +57,9 @@ namespace CycleDataManagement
         string smode = "";
         string chunkedData = "";
 
-
+        /// <summary>
+        /// executes when the form is loaded
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -244,7 +249,10 @@ namespace CycleDataManagement
                 MessageBox.Show(ex.Message);
             }
         }
-
+        /// <summary>
+        /// calculation of SMODE
+        /// </summary>
+        /// <param name="mode"></param>
         private void SMODE(string mode)
         {
             sHeart = int.Parse(mode.Substring(0, 1));
@@ -517,7 +525,7 @@ namespace CycleDataManagement
             }
         }
         /// <summary>
-        /// buttons for various levels of chunking
+        /// executes when level 1 of chunking is selected
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -556,7 +564,11 @@ namespace CycleDataManagement
                 MessageBox.Show("Please select chunk level");
             }
         }
-
+        /// <summary>
+        /// executes when level 2 of chunking is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnchunk2_Click(object sender, EventArgs e)
         {
             if (chk_num > 1)
@@ -594,7 +606,11 @@ namespace CycleDataManagement
             }
 
         }
-
+        /// <summary>
+        /// executes when level 3 of chunking is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnchunk3_Click(object sender, EventArgs e)
         {
             if (chk_num > 1)
@@ -631,7 +647,11 @@ namespace CycleDataManagement
                 MessageBox.Show("Please select chunk level");
             }
         }
-
+        /// <summary>
+        /// executes when level 4 of chunking is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnchunk4_Click(object sender, EventArgs e)
         {
             if (chk_num > 1)
@@ -707,7 +727,7 @@ namespace CycleDataManagement
             string NP = c.CalculateNP();
             double PB = c.CalculatePB();
             string IF = c.CalculateIF();
-            string TSS = c.CalculateTSS();
+            string TSS = c.CalculateTSS(heartRate);
 
             lblftp.Text = FTP + " watts";
             lbltss.Text = TSS + "";
@@ -745,11 +765,11 @@ namespace CycleDataManagement
                 altitude = Calculate.GetAverage(strList, 3);
                 power = Calculate.GetAverage(strList, 4);
 
-                result += "Average Heart Rate : " + heartRate + "\n";
-                result += "Average Speed : " + speed + "\n";
-                result += "Average Cadence : " + cadence + "\n";
-                result += "Average Altitude : " + altitude + "\n";
-                result += "Average Power : " + power + "\n\n\n";
+                result += "Average Heart Rate : " + RoundOff(heartRate) + "\n";
+                result += "Average Speed : " + RoundOff(speed*0.1) + "\n";
+                result += "Average Cadence : " + RoundOff(cadence) + "\n";
+                result += "Average Altitude : " + RoundOff(altitude) + "\n";
+                result += "Average Power : " + RoundOff(power) + "\n\n\n";
 
                 // next chunk
                 chunkCounter++;
@@ -794,7 +814,11 @@ namespace CycleDataManagement
 
             return comparisonData;
         }
-
+        /// <summary>
+        /// action when the interval button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btninterval_Click(object sender, EventArgs e)
         {
             if (dataCount() == 0)

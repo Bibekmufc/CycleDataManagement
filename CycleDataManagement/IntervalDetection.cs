@@ -10,9 +10,16 @@ using System.Windows.Forms;
 
 namespace CycleDataManagement
 {
+    /// <summary>
+    /// this class displays a form to display data of intervals
+    /// </summary>
     public partial class IntervalDetection : Form
     {
         string showAverages;
+        /// <summary>
+        /// constructor of this class
+        /// </summary>
+        /// <param name="average"></param>
         public IntervalDetection(string average)
         {
             InitializeComponent();
